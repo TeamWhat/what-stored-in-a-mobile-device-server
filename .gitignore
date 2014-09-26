@@ -20,3 +20,4 @@ pickle-email-*.html
 # Enviroment variables shouldn't be public
 .env
 vendor
+.nfs*
