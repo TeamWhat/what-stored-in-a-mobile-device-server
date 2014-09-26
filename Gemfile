@@ -6,7 +6,7 @@ gem 'rails', '~> 4.1.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '~> 2.5.3'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
@@ -44,7 +44,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec', '~> 3.1.0'
+  gem 'rspec-rails', '~> 3.1.0'
   gem 'rspec-activemodel-mocks', '~> 1.0.1'
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'capybara', '~> 2.4.3'
