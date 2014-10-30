@@ -21,3 +21,4 @@ pickle-email-*.html
 .env
 vendor
 .nfs*
+.idea/
