@@ -31,6 +31,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.1.0'
   gem 'sqlite3', '~> 1.3.9'
   gem 'byebug', '~> 3.4.0'
 end
@@ -43,12 +44,11 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.1.0'
   gem 'rspec-activemodel-mocks', '~> 1.0.1'
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'capybara', '~> 2.4.3'
   gem 'launchy', '~> 2.4.2'
-  gem 'cucumber-rails', '~> 1.4.1'
+  gem 'cucumber-rails', '~> 1.4.1', require: false
   gem 'database_cleaner', '~> 1.3.0'
 end
 

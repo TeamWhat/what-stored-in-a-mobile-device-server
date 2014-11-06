@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @subject.date %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @subject.brand %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @subject.model %>
+</p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @subject.device %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @subject.product %>
+</p>
+
+<p>
+  <strong>Serial:</strong>
+  <%= @subject.serial %>
+</p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @subject.uid %>
+</p>
+
+<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<%= link_to 'Back', subjects_path %>

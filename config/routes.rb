@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :subjects
+
   resources :demos
   post :demo, to: 'demos/#create'
 
