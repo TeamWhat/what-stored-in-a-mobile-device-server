@@ -7,15 +7,15 @@ RSpec.describe 'images/index', type: :view do
         image_collection_id: 1,
         size: 'Size',
         is_private: false,
-        latitude: '',
-        longitude: ''
+        latitude: '60.2',
+        longitude: '24.5'
       ),
       Image.create!(
         image_collection_id: 1,
         size: 'Size',
         is_private: false,
-        latitude: '',
-        longitude: ''
+        latitude: '60.2',
+        longitude: '24.5'
       )
     ])
   end
@@ -25,7 +25,7 @@ RSpec.describe 'images/index', type: :view do
     assert_select 'tr>td', text: 1.to_s, count: 2
     assert_select 'tr>td', text: 'Size'.to_s, count: 2
     assert_select 'tr>td', text: false.to_s, count: 2
-    assert_select 'tr>td', text: ''.to_s, count: 2
-    assert_select 'tr>td', text: ''.to_s, count: 2
+    assert_select 'tr>td', text: '60.2'.to_s, count: 2
+    assert_select 'tr>td', text: '24.5'.to_s, count: 2
   end
 end
