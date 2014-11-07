@@ -20,13 +20,13 @@ Then /^I should see a success message$/ do
 end
 
 And /^I fill in an incorrect password$/ do
-    fill_in('user_username', with: 'username')
+    fill_in('user_username', with: 'pena')
     fill_in('user_password', with: 'wrongpassword')
 end
 
 And /^I fill in an incorrect username$/ do
     fill_in('user_username', with: 'wrongusername')
-    fill_in('user_password', with: 'password')
+    fill_in('user_password', with: 'penapena')
 end
 
 Then /^I should see a fail message$/ do
