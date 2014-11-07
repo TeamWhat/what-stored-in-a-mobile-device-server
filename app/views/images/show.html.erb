@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image collection:</strong>
+  <%= @image.image_collection_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @image.date %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @image.size %>
+</p>
+
+<p>
+  <strong>Date modified:</strong>
+  <%= @image.date_modified %>
+</p>
+
+<p>
+  <strong>Date added:</strong>
+  <%= @image.date_added %>
+</p>
+
+<p>
+  <strong>Date taken:</strong>
+  <%= @image.date_taken %>
+</p>
+
+<p>
+  <strong>Is private:</strong>
+  <%= @image.is_private %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @image.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @image.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

@@ -11,10 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017124005) do
+ActiveRecord::Schema.define(version: 20141107093610) do
 
   create_table "demos", force: true do |t|
     t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "image_collections", force: true do |t|
+    t.integer  "subject_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "images", force: true do |t|
+    t.integer  "image_collection_id"
+    t.datetime "date"
+    t.string   "size"
+    t.datetime "date_modified"
+    t.datetime "date_added"
+    t.datetime "date_taken"
+    t.boolean  "is_private"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subjects", force: true do |t|
+    t.datetime "date"
+    t.string   "brand"
+    t.string   "model"
+    t.string   "device"
+    t.string   "product"
+    t.string   "serial"
+    t.string   "uid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
