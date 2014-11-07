@@ -1,5 +1,5 @@
 Given /^I am on the login page$/ do
-    visit new_user_session_path
+  visit new_user_session_path
 end
 
 And /^There exists a user$/ do
@@ -7,32 +7,28 @@ And /^There exists a user$/ do
 end
 
 And /^I fill in the correct username and password$/ do
-    fill_in('user_username', with: 'pena')
-    fill_in('user_password', with: 'penapena')
+  fill_in('user_username', with: 'pena')
+  fill_in('user_password', with: 'penapena')
 end
 
 When /^I press Sign in$/ do
-    click_button('Sign in')
+  click_button('Sign in')
 end
 
 Then /^I should see a success message$/ do
-    expect(page).to have_content('Signed in successfully.')
+  expect(page).to have_content('Signed in successfully.')
 end
 
 And /^I fill in an incorrect password$/ do
-    fill_in('user_username', with: 'pena')
-    fill_in('user_password', with: 'wrongpassword')
+  fill_in('user_username', with: 'pena')
+  fill_in('user_password', with: 'wrongpassword')
 end
 
 And /^I fill in an incorrect username$/ do
-    fill_in('user_username', with: 'wrongusername')
-    fill_in('user_password', with: 'penapena')
+  fill_in('user_username', with: 'wrongusername')
+  fill_in('user_password', with: 'penapena')
 end
 
 Then /^I should see a fail message$/ do
-    expect(page).to have_content('Invalid username or password')
+  expect(page).to have_content('Invalid username or password')
 end
-
-
-
-
