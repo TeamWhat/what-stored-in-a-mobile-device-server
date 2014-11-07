@@ -25,6 +25,9 @@ gem 'bootstrap-sass', '~> 3.2.0.2'
 # Load enviroment variables
 gem 'dotenv-rails', '~> 0.11.1'
 
+# Authentication
+gem 'devise', '~> 3.4.1'
+
 group :production do
   gem 'pg', '~> 0.17.1'
   gem 'rails_12factor', '~> 0.0.2'
