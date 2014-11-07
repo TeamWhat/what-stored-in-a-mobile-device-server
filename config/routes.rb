@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :images
+
+  resources :image_collections
+
   resources :subjects
 
   resources :demos

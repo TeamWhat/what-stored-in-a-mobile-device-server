@@ -1,0 +1,53 @@
+<%= form_for(@image) do |f| %>
+  <% if @image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+      <ul>
+      <% @image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :image_collection_id %><br>
+    <%= f.number_field :image_collection_id %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br>
+    <%= f.text_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :date_modified %><br>
+    <%= f.datetime_select :date_modified %>
+  </div>
+  <div class="field">
+    <%= f.label :date_added %><br>
+    <%= f.datetime_select :date_added %>
+  </div>
+  <div class="field">
+    <%= f.label :date_taken %><br>
+    <%= f.datetime_select :date_taken %>
+  </div>
+  <div class="field">
+    <%= f.label :is_private %><br>
+    <%= f.check_box :is_private %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

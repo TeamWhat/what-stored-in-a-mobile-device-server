@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @image_collection.subject_id %>
+</p>
+
+<%= link_to 'Edit', edit_image_collection_path(@image_collection) %> |
+<%= link_to 'Back', image_collections_path %>
