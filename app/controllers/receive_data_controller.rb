@@ -22,7 +22,6 @@ class ReceiveDataController < ApplicationController
   end
 
   def params_for_image(value)
-    {is_private: value[:is_private], longitude: value[:longitude], latitude: value[:latitude], size: value[:size]}
+    { is_private: value[:is_private], longitude: value[:longitude], latitude: value[:latitude], size: value[:size] }
   end
-
 end
