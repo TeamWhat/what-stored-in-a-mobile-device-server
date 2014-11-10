@@ -3,7 +3,6 @@ When /^I go to the subjects page$/ do
 end
 
 Then /^I should see the device info$/ do
-  expect(page).to have_content('UID123')
   expect(page).to have_content('abc')
   expect(page).not_to have_content('nil')
   expect(page).not_to have_content('false')
@@ -15,7 +14,6 @@ Then /^I should see the device info$/ do
 end
 
 Then /^I should not see the device info$/ do
-  expect(page).not_to have_content('UID123')
   expect(page).not_to have_content('jkl')
   expect(page).not_to have_content(Date.current.to_s)
   expect(page).not_to have_content('ghi')
