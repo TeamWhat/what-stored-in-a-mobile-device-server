@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+
   resources :images
   resources :image_collections
   resources :subjects
   devise_for :users
   resources :demos
   post :demo, to: 'demos/#create'
+  post 'submit', to: 'receive_data#receive'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
