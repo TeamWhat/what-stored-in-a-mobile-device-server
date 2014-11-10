@@ -5,6 +5,11 @@ class SubjectsController < ApplicationController
   # GET /subjects.json
   def index
     @subjects = Subject.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @subjects.to_csv }
+      format.xls
+    end
   end
 
   # GET /subjects/1

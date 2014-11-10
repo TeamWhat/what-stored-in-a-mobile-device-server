@@ -37,3 +37,9 @@
 <br>
 
 <%= link_to 'New Image', new_image_path %>
+
+<p>
+  Download:
+  <%= link_to "CSV", images_path(format: "csv") %> |
+  <%= link_to "Excel", images_path(format: "xls") %>
+</p>

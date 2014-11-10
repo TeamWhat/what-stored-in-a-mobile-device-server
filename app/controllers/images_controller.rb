@@ -5,6 +5,11 @@ class ImagesController < ApplicationController
   # GET /images.json
   def index
     @images = Image.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @images.to_csv }
+      format.xls
+    end
   end
 
   # GET /images/1
