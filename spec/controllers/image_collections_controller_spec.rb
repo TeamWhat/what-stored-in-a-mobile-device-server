@@ -9,10 +9,16 @@ RSpec.describe ImageCollectionsController, type: :controller do
 
   let(:invalid_attributes) { { subject_id: 3 } }
 
+  let(:user) { FactoryGirl.create(:user) }
+
+  before :each do
+    sign_in :user, user
+  end
+
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # ImageCollectionsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) {}
 
   describe 'GET index' do
     it 'assigns all image_collections as @image_collections' do
