@@ -3,12 +3,12 @@ Given /^I am on the login page$/ do
 end
 
 And /^There exists a user$/ do
-  User.create(username: 'pena', password: 'penapena', password_confirmation: 'penapena')
+  FactoryGirl.create(:user)
 end
 
 And /^I fill in the correct username and password$/ do
-  fill_in('user_username', with: 'pena')
-  fill_in('user_password', with: 'penapena')
+  fill_in('user_username', with: 'admin')
+  fill_in('user_password', with: 'password')
 end
 
 When /^I press Sign in$/ do
@@ -20,15 +20,27 @@ Then /^I should see a success message$/ do
 end
 
 And /^I fill in an incorrect password$/ do
-  fill_in('user_username', with: 'pena')
+  fill_in('user_username', with: 'admin')
   fill_in('user_password', with: 'wrongpassword')
 end
 
 And /^I fill in an incorrect username$/ do
   fill_in('user_username', with: 'wrongusername')
-  fill_in('user_password', with: 'penapena')
+  fill_in('user_password', with: 'password')
 end
 
 Then /^I should see a fail message$/ do
   expect(page).to have_content('Invalid username or password')
+end
+
+Given /^I have logged in$/ do
+  FactoryGirl.create(:user)
+  visit new_user_session_path
+  fill_in('user_username', with: 'admin')
+  fill_in('user_password', with: 'password')
+  click_button('Sign in')
+end
+
+And /^I have not logged in$/ do
+  click_on('Sign out') if page.has_content? 'Sign out'
 end
