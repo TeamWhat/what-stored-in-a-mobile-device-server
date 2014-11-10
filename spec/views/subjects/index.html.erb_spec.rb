@@ -29,7 +29,5 @@ RSpec.describe 'subjects/index', type: :view do
     assert_select 'tr>td', text: 'Device'.to_s, count: 2
     assert_select 'tr>td', text: 'Product'.to_s, count: 2
     assert_select 'tr>td', text: 'Serial'.to_s, count: 2
-    expect(rendered).to match(/Uid1/)
-    expect(rendered).to match(/Uid2/)
   end
 end

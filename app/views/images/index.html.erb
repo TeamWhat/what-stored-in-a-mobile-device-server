@@ -1,9 +1,8 @@
 <h1>Listing images</h1>
 
-<table>
+<table class="table table-condensed table-hover">
   <thead>
     <tr>
-      <th>Image collection</th>
       <th>Date</th>
       <th>Size</th>
       <th>Date modified</th>
@@ -19,7 +18,6 @@
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= image.image_collection_id %></td>
         <td><%= image.date %></td>
         <td><%= image.size %></td>
         <td><%= image.date_modified %></td>

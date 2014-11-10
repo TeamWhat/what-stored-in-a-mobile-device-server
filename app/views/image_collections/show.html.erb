@@ -1,9 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Subject:</strong>
-  <%= @image_collection.subject_id %>
-</p>
+<p> <%= link_to "Subject #{@image_collection.subject_id}", @image_collection.subject %></p>
+
+<h3> Images </h3>
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Collection date</th>
+      <th>Size</th>
+      <th>Date modified</th>
+      <th>Date added</th>
+      <th>Date taken</th>
+      <th>Is private</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @image_collection.images.each do |image| %>
+      <tr>
+        <td><%= image.date %></td>
+        <td><%= image.size %></td>
+        <td><%= image.date_modified %></td>
+        <td><%= image.date_added %></td>
+        <td><%= image.date_taken %></td>
+        <td><%= image.is_private %></td>
+        <td><%= image.latitude %></td>
+        <td><%= image.longitude %></td>
+        <td><%= link_to 'Show', image %></td>
+      </tr>
+    <% end %>
+</tbody>
+</table>
 
 <%= link_to 'Edit', edit_image_collection_path(@image_collection) %> |
 <%= link_to 'Back', image_collections_path %>
