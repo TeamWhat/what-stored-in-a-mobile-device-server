@@ -35,5 +35,11 @@
   <%= @subject.uid %>
 </p>
 
+<h3> Image collections </h3>
+<ul>
+  <% @subject.image_collections.each do |image_collection| %>
+    <li><%= link_to image_collection.id, image_collection_path(image_collection) %></li>
+  <% end %>
+</ul>
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Back', subjects_path %>

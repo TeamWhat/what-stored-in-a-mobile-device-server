@@ -27,6 +27,12 @@ RSpec.describe SubjectsController, type: :controller do
 
   let(:invalid_attributes) { { subject: {} } }
 
+  let(:user) { FactoryGirl.create(:user) }
+
+  before :each do
+    sign_in :user, user
+  end
+
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # SubjectsController. Be sure to keep this updated too.
