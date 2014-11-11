@@ -44,6 +44,7 @@ group :development do
   gem 'spring', '~> 1.1.3'
   gem 'rails_layout', '~> 1.0.22'
   gem 'better_errors', '~> 2.0.0'
+  gem 'binding_of_caller', '~> 0.7.2'
 end
 
 group :test do

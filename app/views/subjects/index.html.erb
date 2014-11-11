@@ -32,4 +32,10 @@
 
 <br>
 
+<p>
+  Download:
+  <%= link_to "CSV", subjects_path(format: "csv") %> |
+  <%= link_to "Excel", subjects_path(format: "xls") %>
+</p>
+
 <%= link_to 'New Subject', new_subject_path %>

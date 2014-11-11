@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Image collection ID</Data></Cell>
+        <Cell><Data ss:Type="String">Date</Data></Cell>
+        <Cell><Data ss:Type="String">Size</Data></Cell>
+        <Cell><Data ss:Type="String">Date modified</Data></Cell>
+        <Cell><Data ss:Type="String">Date added</Data></Cell>
+        <Cell><Data ss:Type="String">Date taken</Data></Cell>
+        <Cell><Data ss:Type="String">Is private</Data></Cell>
+        <Cell><Data ss:Type="String">Latitude</Data></Cell>
+        <Cell><Data ss:Type="String">Longitude</Data></Cell>
+        <Cell><Data ss:Type="String">Created at</Data></Cell>
+        <Cell><Data ss:Type="String">Updated at</Data></Cell>
+      </Row>
+    <% @images.each do |image| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= image.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.image_collection_id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.size %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.date_modified %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.date_added %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.date_taken %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.is_private %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.latitude %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.longitude %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.created_at %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.updated_at %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

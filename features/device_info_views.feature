@@ -7,7 +7,7 @@ Feature: Device info views
     When I go to the subjects page
     Then I should see the device info
 
-  Scenario: Logged in user cannot see other people's image data
+  Scenario: Cannot see other people's image data
     Given There exists a user
     And There exists device info
     When I go to the subjects page

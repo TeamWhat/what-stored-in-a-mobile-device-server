@@ -10,4 +10,13 @@ class Subject < ActiveRecord::Base
     subject = Subject.create(params_for_subject) if subject.nil?
     subject
   end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |object|
+        csv << object.attributes.values_at(*column_names)
+      end
+    end
+  end
 end

@@ -1,10 +1,13 @@
+When /^I go to the images page$/ do
+  visit images_path
+end
+
 When /^I go to the page of a image collection$/ do
   ic = ImageCollection.first
   visit image_collection_path(ic)
 end
 
 Then /^I should see the image data$/ do
-  save_and_open_page
   expect(page).to have_content('5026')
   expect(page).to have_content('52.1')
   expect(page).not_to have_content('nil')

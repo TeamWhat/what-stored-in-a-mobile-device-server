@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Date</Data></Cell>
+        <Cell><Data ss:Type="String">Brand</Data></Cell>
+        <Cell><Data ss:Type="String">Model</Data></Cell>
+        <Cell><Data ss:Type="String">Device</Data></Cell>
+        <Cell><Data ss:Type="String">Product</Data></Cell>
+        <Cell><Data ss:Type="String">Serial</Data></Cell>
+        <Cell><Data ss:Type="String">UID</Data></Cell>
+        <Cell><Data ss:Type="String">Created at</Data></Cell>
+        <Cell><Data ss:Type="String">Updated at</Data></Cell>
+      </Row>
+    <% @subjects.each do |subject| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= subject.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= subject.date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= subject.brand %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= subject.model %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= subject.device %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= subject.product %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= subject.serial %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= subject.uid %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= subject.created_at %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= subject.updated_at %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
