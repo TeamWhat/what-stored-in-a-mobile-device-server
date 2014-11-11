@@ -8,8 +8,9 @@ class Subject < ActiveRecord::Base
   def self.find_or_create(params_for_subject, datetime)
     subject = Subject.find_by uid: params_for_subject[:uid]
     if subject.nil?
-      subject = Subject.create(params_for_subject)
+      subject = Subject.new(params_for_subject)
       subject.date = DateTime.strptime(datetime, '%s') unless datetime.nil?
+      subject.save
     end
     subject
   end
