@@ -5,9 +5,12 @@ class Subject < ActiveRecord::Base
   validates_uniqueness_of :uid
   validates_presence_of :uid
 
-  def self.find_or_create(params_for_subject)
+  def self.find_or_create(params_for_subject, datetime)
     subject = Subject.find_by uid: params_for_subject[:uid]
-    subject = Subject.create(params_for_subject) if subject.nil?
+    if subject.nil?
+      subject = Subject.create(params_for_subject)
+      subject.date = DateTime.strptime(datetime, '%s') unless datetime.nil?
+    end
     subject
   end
 
