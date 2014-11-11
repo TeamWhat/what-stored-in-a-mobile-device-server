@@ -2,14 +2,17 @@ class ReceiveDataController < ApplicationController
   require 'date'
 
   def receive
-    subject = Subject.find_or_create(params_for_subject)
-    image_collection = subject.image_collections.create
+    subject = Subject.find_or_create(params_for_subject, params[:device_info]['0'][:datetime])
     params[:image_info].each_value do |value|
+      next if value[:datetime].nil?
+      image_collection = subject.image_collections.find_or_create_by(date: DateTime.strptime(value[:datetime], '%s'))
       image = image_collection.images.new(params_for_image(value))
-      image.date_added = DateTime.strptime(value[:date_added], '%s')
-      image.date_modified = DateTime.strptime(value[:date_modified], '%s')
-      image.date_taken = DateTime.strptime(value[:date_taken], '%s')
-      image.save
+      image.date_added = DateTime.strptime(value[:date_added], '%s') unless value[:date_added].nil?
+      image.date_modified = DateTime.strptime(value[:date_modified], '%s') unless value[:date_modified].nil?
+      image.date_taken = DateTime.strptime(value[:date_taken], '%s') unless value[:date_taken].nil?
+      image.date = DateTime.strptime(value[:datetime], '%s')
+      # TODO: Delete unless from following line after we have changed Android to only send unsent data
+      image.save unless Image.find_by(date: image.date, date_added: image.date_added, date_modified: image.date_modified, date_taken: image.date_taken, latitude: image.latitude, longitude: image.longitude, size: image.size)
     end
     head :ok, content_type: 'text/html'
   end
