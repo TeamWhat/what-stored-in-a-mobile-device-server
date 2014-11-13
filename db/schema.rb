@@ -50,6 +50,9 @@ ActiveRecord::Schema.define(version: 20141118122430) do
     t.string   "uid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "gender"
+    t.string   "country"
+    t.integer  "age"
   end
 
   create_table "users", force: true do |t|

@@ -28,6 +28,13 @@ RSpec.describe ReceiveDataController, type: :controller do
             serial: 'x6382f11c7ee04a',
             datetime: '1413189832'
           }
+        },
+        personal_info: {
+          '0' => {
+            gender: 'male',
+            age: 132,
+            country: 'CCCP'
+          }
         }
       }
     end

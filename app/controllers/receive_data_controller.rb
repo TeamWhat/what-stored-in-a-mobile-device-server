@@ -3,6 +3,13 @@ class ReceiveDataController < ApplicationController
 
   def receive
     subject = Subject.find_or_create(params_for_subject, params[:device_info]['0'][:datetime])
+    add_images(params, subject)
+    head :ok, content_type: 'text/html'
+  end
+
+  private
+
+  def add_images(params, subject)
     params[:image_info].each_value do |value|
       next if value[:datetime].nil?
       collection = subject.collections.find_or_create_by(date: DateTime.strptime(value[:datetime], '%s'))
@@ -14,14 +21,12 @@ class ReceiveDataController < ApplicationController
       # TODO: Delete unless from following line after we have changed Android to only send unsent data
       image.save unless Image.find_by(date: image.date, date_added: image.date_added, date_modified: image.date_modified, date_taken: image.date_taken, latitude: image.latitude, longitude: image.longitude, size: image.size)
     end
-    head :ok, content_type: 'text/html'
   end
-
-  private
 
   def params_for_subject
     params.require(:device_info).require('0').permit(:device, :product, :brand, :model, :serial)
       .merge(params.permit(:uid))
+      .merge(params.require(:personal_info).require('0').permit(:gender, :age, :country))
   end
 
   def params_for_image(value)
