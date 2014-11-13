@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :images
   resources :image_collections
   resources :subjects
+  resources :visualizations, only: [:index]
   devise_for :users
   resources :demos
   post :demo, to: 'demos/#create'
