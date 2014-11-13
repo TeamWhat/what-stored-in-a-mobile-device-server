@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'byebug'
 
 RSpec.describe ReceiveDataController, type: :controller do
 
@@ -14,7 +15,8 @@ RSpec.describe ReceiveDataController, type: :controller do
             date_added: '1413189832',
             date_modified: '1413189832',
             date_taken: '1413189832',
-            size: '25'
+            size: '25',
+            datetime: '1413189832'
           }
         },
         device_info: {
@@ -23,7 +25,8 @@ RSpec.describe ReceiveDataController, type: :controller do
             product: '15',
             brand: 'Google',
             model: 'asd',
-            serial: 'x6382f11c7ee04a'
+            serial: 'x6382f11c7ee04a',
+            datetime: '1413189832'
           }
         }
       }
