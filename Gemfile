@@ -28,6 +28,9 @@ gem 'dotenv-rails', '~> 0.11.1'
 # Authentication
 gem 'devise', '~> 3.4.1'
 
+# Visualization
+gem 'chartkick'
+
 group :production do
   gem 'pg', '~> 0.17.1'
   gem 'rails_12factor', '~> 0.0.2'
