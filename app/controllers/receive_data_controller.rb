@@ -20,7 +20,7 @@ class ReceiveDataController < ApplicationController
       image.date_taken = DateTime.strptime(value[:date_taken], '%s') unless value[:date_taken].nil?
       image.date = DateTime.strptime(value[:datetime], '%s')
       # TODO: Delete unless from following line after we have changed Android to only send unsent data
-      image.save unless Image.find_by(params_for_image(value).merge({ date: image.date, date_added: image.date_added, date_modified: image.date_modified, date_taken: image.date_taken }))
+      image.save unless Image.find_by(params_for_image(value).merge(date: image.date, date_added: image.date_added, date_modified: image.date_modified, date_taken: image.date_taken))
     end
   end
 
@@ -32,7 +32,7 @@ class ReceiveDataController < ApplicationController
       application.first_installed = DateTime.strptime(value[:first_installed], '%s') unless value[:first_installed].nil?
       application.date = DateTime.strptime(value[:datetime], '%s')
       # TODO: Delete unless from following line after we have changed Android to only send unsent data
-      application.save unless Application.find_by(params_for_application(value).merge({ date: application.date, first_installed: application.first_installed }))
+      application.save unless Application.find_by(params_for_application(value).merge(date: application.date, first_installed: application.first_installed))
     end
   end
 

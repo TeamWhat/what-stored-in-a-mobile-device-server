@@ -40,11 +40,12 @@ class ApplicationsController < ApplicationController
   end
 
   private
-    def set_application
-      @application = Application.find(params[:id])
-    end
 
-    def application_params
-      params.require(:application).permit(:label, :package_name, :first_installed, :version_name, :target_sdk_version)
-    end
+  def set_application
+    @application = Application.find(params[:id])
+  end
+
+  def application_params
+    params.require(:application).permit(:label, :package_name, :first_installed, :version_name, :target_sdk_version)
+  end
 end

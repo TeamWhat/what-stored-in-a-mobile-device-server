@@ -14,4 +14,7 @@ FactoryGirl.define do
 
   factory :collection do
   end
+
+  factory :application do
+  end
 end
