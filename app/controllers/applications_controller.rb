@@ -1,10 +1,14 @@
 class ApplicationsController < ApplicationController
-  respond_to :html, :json
+  respond_to :html, :json, except: :index
   before_action :set_application, only: [:show, :edit, :update, :destroy]
 
   def index
     @applications = Application.all
-    respond_with(@applications)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @applications.to_csv }
+      format.xls
+    end
   end
 
   def show

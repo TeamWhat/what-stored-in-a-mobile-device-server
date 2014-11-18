@@ -1,6 +1,6 @@
 <h1>Listing applications</h1>
 
-<table>
+<table class="table table-condensed table-hover">
   <thead>
     <tr>
       <th>Label</th>
@@ -31,3 +31,9 @@
 <br>
 
 <%= link_to 'New Application', new_application_path %>
+
+<p>
+  Download:
+  <%= link_to "CSV", applications_path(format: "csv") %> |
+  <%= link_to "Excel", applications_path(format: "xls") %>
+</p>

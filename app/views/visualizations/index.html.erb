@@ -16,7 +16,7 @@
       <%= line_chart Image.group(:date_taken).count %>
     </div>
     <div class="col-md-6">
-      <h2 class="h2">collections per subject</h2>
+      <h2 class="h2">Collections per subject</h2>
       <%= bar_chart Collection.group(:subject).count %>
     </div>
 </div>
