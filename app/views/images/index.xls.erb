@@ -8,7 +8,7 @@
     <Table>
       <Row>
         <Cell><Data ss:Type="String">ID</Data></Cell>
-        <Cell><Data ss:Type="String">Image collection ID</Data></Cell>
+        <Cell><Data ss:Type="String">collection ID</Data></Cell>
         <Cell><Data ss:Type="String">Date</Data></Cell>
         <Cell><Data ss:Type="String">Size</Data></Cell>
         <Cell><Data ss:Type="String">Date modified</Data></Cell>
@@ -23,7 +23,7 @@
     <% @images.each do |image| %>
       <Row>
         <Cell><Data ss:Type="String"><%= image.id %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= image.image_collection_id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.collection_id %></Data></Cell>
         <Cell><Data ss:Type="String"><%= image.date %></Data></Cell>
         <Cell><Data ss:Type="String"><%= image.size %></Data></Cell>
         <Cell><Data ss:Type="String"><%= image.date_modified %></Data></Cell>

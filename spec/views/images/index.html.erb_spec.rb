@@ -4,14 +4,14 @@ RSpec.describe 'images/index', type: :view do
   before(:each) do
     assign(:images, [
       Image.create!(
-        image_collection_id: 1,
+        collection_id: 1,
         size: 32,
         is_private: false,
         latitude: '60.2',
         longitude: '24.5'
       ),
       Image.create!(
-        image_collection_id: 1,
+        collection_id: 1,
         size: 32,
         is_private: false,
         latitude: '60.2',

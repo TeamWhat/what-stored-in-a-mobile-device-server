@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p> <%= link_to "Subject #{@image_collection.subject_id}", @image_collection.subject %></p>
+<p> <%= link_to "Subject #{@collection.subject_id}", @collection.subject %></p>
 
 <h3> Images </h3>
 <table class="table table-condensed table-hover">
@@ -18,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @image_collection.images.each do |image| %>
+    <% @collection.images.each do |image| %>
       <tr>
         <td><%= image.date %></td>
         <td><%= image.size %></td>
@@ -34,5 +34,5 @@
 </tbody>
 </table>
 
-<%= link_to 'Edit', edit_image_collection_path(@image_collection) %> |
-<%= link_to 'Back', image_collections_path %>
+<%= link_to 'Edit', edit_collection_path(@collection) %> |
+<%= link_to 'Back', collections_path %>

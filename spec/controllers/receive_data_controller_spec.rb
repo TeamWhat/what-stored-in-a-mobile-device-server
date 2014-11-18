@@ -37,7 +37,7 @@ RSpec.describe ReceiveDataController, type: :controller do
       subject = Subject.last
       expect(subject.uid).to eq(data[:uid])
       expect(subject.device).to eq(data[:device_info]['0'][:device])
-      image = subject.image_collections.last.images.last
+      image = subject.collections.last.images.last
       expect(image.latitude.to_s).to eq(data[:image_info]['0'][:latitude])
     end
 

@@ -5,8 +5,8 @@ class ReceiveDataController < ApplicationController
     subject = Subject.find_or_create(params_for_subject, params[:device_info]['0'][:datetime])
     params[:image_info].each_value do |value|
       next if value[:datetime].nil?
-      image_collection = subject.image_collections.find_or_create_by(date: DateTime.strptime(value[:datetime], '%s'))
-      image = image_collection.images.new(params_for_image(value))
+      collection = subject.collections.find_or_create_by(date: DateTime.strptime(value[:datetime], '%s'))
+      image = collection.images.new(params_for_image(value))
       image.date_added = DateTime.strptime(value[:date_added], '%s') unless value[:date_added].nil?
       image.date_modified = DateTime.strptime(value[:date_modified], '%s') unless value[:date_modified].nil?
       image.date_taken = DateTime.strptime(value[:date_taken], '%s') unless value[:date_taken].nil?
