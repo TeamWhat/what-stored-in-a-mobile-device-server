@@ -1,4 +1,5 @@
 class ApplicationsController < ApplicationController
+  respond_to :html, :json
   before_action :set_application, only: [:show, :edit, :update, :destroy]
 
   def index

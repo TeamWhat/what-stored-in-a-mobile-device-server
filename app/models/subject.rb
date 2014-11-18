@@ -1,6 +1,7 @@
 class Subject < ActiveRecord::Base
   has_many :collections, dependent: :destroy
   has_many :images, through: :collections
+  has_many :applications, through: :collections
 
   validates_uniqueness_of :uid
   validates_presence_of :uid

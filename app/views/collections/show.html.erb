@@ -34,5 +34,33 @@
 </tbody>
 </table>
 
+<h3> Applications </h3>
+<table class="table table-condensed table-hover">
+  <thead>
+  <tr>
+    <th>Collection date</th>
+    <th>Label</th>
+    <th>Package name</th>
+    <th>First installed</th>
+    <th>Version name</th>
+    <th>Target SDK version</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @collection.applications.each do |application| %>
+      <tr>
+        <td><%= application.date %></td>
+        <td><%= application.label %></td>
+        <td><%= application.package_name %></td>
+        <td><%= application.first_installed %></td>
+        <td><%= application.version_name %></td>
+        <td><%= application.target_sdk_version %></td>
+        <td><%= link_to 'Show', application %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_collection_path(@collection) %> |
 <%= link_to 'Back', collections_path %>

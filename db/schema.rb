@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118122430) do
+ActiveRecord::Schema.define(version: 20141118141629) do
+
+  create_table "applications", force: true do |t|
+    t.string   "label"
+    t.string   "package_name"
+    t.datetime "first_installed"
+    t.string   "version_name"
+    t.string   "target_sdk_version"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "collection_id"
+    t.datetime "date"
+  end
 
   create_table "collections", force: true do |t|
     t.integer  "subject_id"
