@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'images/show', type: :view do
   before(:each) do
     @image = assign(:image, Image.create!(
-      image_collection_id: 1,
+      collection_id: 1,
       size: 'Size',
       is_private: false,
       latitude: '',

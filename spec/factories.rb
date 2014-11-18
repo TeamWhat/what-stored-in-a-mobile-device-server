@@ -12,6 +12,9 @@ FactoryGirl.define do
   factory :image do
   end
 
-  factory :image_collection do
+  factory :collection do
+  end
+
+  factory :application do
   end
 end

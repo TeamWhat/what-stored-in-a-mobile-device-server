@@ -1,6 +1,6 @@
 class Image < ActiveRecord::Base
-  belongs_to :image_collection
-  has_one :subject, through: :image_collection
+  belongs_to :collection
+  has_one :subject, through: :collection
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|

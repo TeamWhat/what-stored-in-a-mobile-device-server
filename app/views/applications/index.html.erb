@@ -1,0 +1,39 @@
+<h1>Listing applications</h1>
+
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Package name</th>
+      <th>First installed</th>
+      <th>Version name</th>
+      <th>Target sdk version</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @applications.each do |application| %>
+      <tr>
+        <td><%= application.label %></td>
+        <td><%= application.package_name %></td>
+        <td><%= application.first_installed %></td>
+        <td><%= application.version_name %></td>
+        <td><%= application.target_sdk_version %></td>
+        <td><%= link_to 'Show', application %></td>
+        <td><%= link_to 'Edit', edit_application_path(application) %></td>
+        <td><%= link_to 'Destroy', application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Application', new_application_path %>
+
+<p>
+  Download:
+  <%= link_to "CSV", applications_path(format: "csv") %> |
+  <%= link_to "Excel", applications_path(format: "xls") %>
+</p>

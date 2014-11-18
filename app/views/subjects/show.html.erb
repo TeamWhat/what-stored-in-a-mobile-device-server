@@ -35,10 +35,10 @@
   <%= @subject.uid %>
 </p>
 
-<h3> Image collections </h3>
+<h3> Collections </h3>
 <ul>
-  <% @subject.image_collections.each do |image_collection| %>
-    <li><%= link_to image_collection.id, image_collection_path(image_collection) %></li>
+  <% @subject.collections.each do |collection| %>
+    <li><%= link_to collection.id, collection_path(collection) %></li>
   <% end %>
 </ul>
 <%= link_to 'Edit', edit_subject_path(@subject) %> |

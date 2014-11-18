@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'images/new', type: :view do
   before(:each) do
     assign(:image, Image.new(
-      image_collection_id: 1,
+      collection_id: 1,
       size: 'MyString',
       is_private: false,
       latitude: '',
@@ -16,7 +16,7 @@ RSpec.describe 'images/new', type: :view do
 
     assert_select 'form[action=?][method=?]', images_path, 'post' do
 
-      assert_select 'input#image_image_collection_id[name=?]', 'image[image_collection_id]'
+      assert_select 'input#image_collection_id[name=?]', 'image[collection_id]'
 
       assert_select 'input#image_size[name=?]', 'image[size]'
 

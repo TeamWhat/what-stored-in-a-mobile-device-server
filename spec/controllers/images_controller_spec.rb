@@ -7,7 +7,7 @@ RSpec.describe ImagesController, type: :controller do
   # adjust the attributes here as well.
   let(:valid_attributes) { FactoryGirl.attributes_for(:image) }
 
-  let(:invalid_attributes) { { image_collection_id: 3 } }
+  let(:invalid_attributes) { { collection_id: 3 } }
 
   let(:user) { FactoryGirl.create(:user) }
 
@@ -53,7 +53,7 @@ RSpec.describe ImagesController, type: :controller do
 
   describe 'POST create' do
     describe 'with valid params' do
-      let(:valid_attributes) { { image_collection_id: 3 } }
+      let(:valid_attributes) { { collection_id: 3 } }
 
       it 'creates a new Image' do
         expect do

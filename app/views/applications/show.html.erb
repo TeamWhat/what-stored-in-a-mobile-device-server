@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @application.label %>
+</p>
+
+<p>
+  <strong>Package name:</strong>
+  <%= @application.package_name %>
+</p>
+
+<p>
+  <strong>First installed:</strong>
+  <%= @application.first_installed %>
+</p>
+
+<p>
+  <strong>Version name:</strong>
+  <%= @application.version_name %>
+</p>
+
+<p>
+  <strong>Target sdk version:</strong>
+  <%= @application.target_sdk_version %>
+</p>
+
+<%= link_to 'Edit', edit_application_path(@application) %> |
+<%= link_to 'Back', applications_path %>
