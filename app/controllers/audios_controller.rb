@@ -1,10 +1,14 @@
 class AudiosController < ApplicationController
-  respond_to :html, :json
+respond_to :html, :json, except: :index
   before_action :set_audio, only: [:show, :edit, :update, :destroy]
 
   def index
     @audios = Audio.all
-    respond_with(@audios)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @audios.to_csv }
+      format.xls
+    end
   end
 
   def show
