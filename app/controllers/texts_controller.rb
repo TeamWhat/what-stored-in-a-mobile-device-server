@@ -1,10 +1,14 @@
 class TextsController < ApplicationController
-  respond_to :html, :json
+  respond_to :html, :json, except: :index
   before_action :set_text, only: [:show, :edit, :update, :destroy]
 
   def index
     @texts = Text.all
-    respond_with(@texts)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @texts.to_csv }
+      format.xls
+    end
   end
 
   def show

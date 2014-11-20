@@ -31,3 +31,9 @@
 <br>
 
 <%= link_to 'New Text', new_text_path %>
+
+<p>
+  Download:
+  <%= link_to "CSV", texts_path(format: "csv") %> |
+  <%= link_to "Excel", texts_path(format: "xls") %>
+</p>
