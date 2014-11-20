@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Application, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject(:application) { FactoryGirl.create(:application) }
+  it { is_expected.to be_valid }
 end
