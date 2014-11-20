@@ -20,4 +20,7 @@ FactoryGirl.define do
 
   factory :text do
   end
+
+  factory :audio do
+  end
 end

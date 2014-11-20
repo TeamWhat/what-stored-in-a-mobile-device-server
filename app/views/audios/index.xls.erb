@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">collection ID</Data></Cell>
+        <Cell><Data ss:Type="String">Date</Data></Cell>
+        <Cell><Data ss:Type="String">Album</Data></Cell>
+        <Cell><Data ss:Type="String">Artist</Data></Cell>
+        <Cell><Data ss:Type="String">Composer</Data></Cell>
+        <Cell><Data ss:Type="String">Year</Data></Cell>
+        <Cell><Data ss:Type="String">Date added</Data></Cell>
+        <Cell><Data ss:Type="String">Date modified</Data></Cell>
+        <Cell><Data ss:Type="String">Size</Data></Cell>
+        <Cell><Data ss:Type="String">Is alarm</Data></Cell>
+        <Cell><Data ss:Type="String">Is music</Data></Cell>
+        <Cell><Data ss:Type="String">Is notification</Data></Cell>
+        <Cell><Data ss:Type="String">Is podcast</Data></Cell>
+        <Cell><Data ss:Type="String">Is ringtone</Data></Cell>
+        <Cell><Data ss:Type="String">Duration</Data></Cell>
+        <Cell><Data ss:Type="String">Created at</Data></Cell>
+        <Cell><Data ss:Type="String">Updated at</Data></Cell>
+      </Row>
+      <% @audios.each do |audio| %>
+          <Row>
+            <Cell><Data ss:Type="String"><%= audio.id %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.collection_id %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.date %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.album %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.artist %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.composer %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.year %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.date_added %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.date_modified %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.size %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.is_alarm %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.is_music %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.is_notification %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.is_podcast %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.is_ringtone %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.duration %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.created_at %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= audio.updated_at %></Data></Cell>
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

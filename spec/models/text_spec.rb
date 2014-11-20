@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Text, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject(:text) { FactoryGirl.create(:text) }
+  it { is_expected.to be_valid }
 end

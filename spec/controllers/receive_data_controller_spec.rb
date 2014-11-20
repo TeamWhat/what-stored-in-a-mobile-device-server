@@ -50,6 +50,24 @@ RSpec.describe ReceiveDataController, type: :controller do
             size: '21',
             mime_type: 'application/pdf'
           }
+        },
+        audio_data: {
+          '0' => {
+              datetime: '1413189832',
+              artist: 'Tester',
+              year: '1776',
+              date_added: '1416491308',
+              date_modified: '1416491308',
+              is_notification: '0',
+              is_podcast: '0',
+              is_music: '0',
+              is_ringtone: '0',
+              is_alarm: '0',
+              duration: '0',
+              composer: '0',
+              size: '56',
+              album: 'test music'
+          }
         }
       }
     end
@@ -85,6 +103,13 @@ RSpec.describe ReceiveDataController, type: :controller do
         it 'have been saved' do
           text = @subject.collections.last.texts.last
           expect(text.size.to_s).to eq(data[:text_data]['0'][:size])
+        end
+      end
+
+      describe 'audio files' do
+        it 'have been saved' do
+          audio = @subject.collections.last.audios.last
+          expect(audio.size.to_s).to eq(data[:audio_data]['0'][:size])
         end
       end
     end

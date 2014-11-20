@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
   resources :texts
-
+  resources :audios
   resources :applications
-
   resources :images
   resources :collections
   resources :subjects
