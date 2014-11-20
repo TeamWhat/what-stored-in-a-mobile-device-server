@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :texts
+
   resources :applications
 
   resources :images

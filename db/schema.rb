@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118141629) do
+ActiveRecord::Schema.define(version: 20141120105051) do
 
   create_table "applications", force: true do |t|
     t.string   "label"
@@ -65,6 +65,17 @@ ActiveRecord::Schema.define(version: 20141118141629) do
     t.string   "gender"
     t.string   "country"
     t.integer  "age"
+  end
+
+  create_table "texts", force: true do |t|
+    t.datetime "date"
+    t.integer  "size"
+    t.datetime "date_modified"
+    t.datetime "date_added"
+    t.string   "mime_type"
+    t.integer  "collection_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

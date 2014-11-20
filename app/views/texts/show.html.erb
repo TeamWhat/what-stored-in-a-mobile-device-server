@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @text.date %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @text.size %>
+</p>
+
+<p>
+  <strong>Date modified:</strong>
+  <%= @text.date_modified %>
+</p>
+
+<p>
+  <strong>Date added:</strong>
+  <%= @text.date_added %>
+</p>
+
+<p>
+  <strong>Mime type:</strong>
+  <%= @text.mime_type %>
+</p>
+
+<%= link_to 'Edit', edit_text_path(@text) %> |
+<%= link_to 'Back', texts_path %>

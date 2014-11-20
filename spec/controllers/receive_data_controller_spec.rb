@@ -41,6 +41,15 @@ RSpec.describe ReceiveDataController, type: :controller do
             first_installed: '1413189555',
             application_label: 'Browser'
           }
+        },
+        text_data: {
+          '0' => {
+            datetime: '1413189832',
+            date_added: '1416481941',
+            date_modified: '1416481806',
+            size: '21',
+            mime_type: 'application/pdf'
+          }
         }
       }
     end
@@ -69,6 +78,13 @@ RSpec.describe ReceiveDataController, type: :controller do
         it 'have been saved' do
           application = @subject.collections.last.applications.last
           expect(application.label).to eq(data[:application_data]['0'][:application_label])
+        end
+      end
+
+      describe 'text files' do
+        it 'have been saved' do
+          text = @subject.collections.last.texts.last
+          expect(text.size.to_s).to eq(data[:text_data]['0'][:size])
         end
       end
     end
