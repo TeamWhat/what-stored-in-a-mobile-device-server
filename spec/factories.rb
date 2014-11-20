@@ -17,4 +17,7 @@ FactoryGirl.define do
 
   factory :application do
   end
+
+  factory :text do
+  end
 end

@@ -62,5 +62,32 @@
   </tbody>
 </table>
 
+<h3>Text files</h3>
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Size</th>
+      <th>Date modified</th>
+      <th>Date added</th>
+      <th>Mime type</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @collection.texts.each do |text| %>
+      <tr>
+        <td><%= text.date %></td>
+        <td><%= text.size %></td>
+        <td><%= text.date_modified %></td>
+        <td><%= text.date_added %></td>
+        <td><%= text.mime_type %></td>
+        <td><%= link_to 'Show', text %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_collection_path(@collection) %> |
 <%= link_to 'Back', collections_path %>
