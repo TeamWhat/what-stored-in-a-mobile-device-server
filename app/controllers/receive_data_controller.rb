@@ -5,6 +5,7 @@ class ReceiveDataController < ApplicationController
     subject = Subject.find_or_create(params_for_subject, params[:device_info]['0'][:datetime])
     add_images(params, subject)
     add_applications(params, subject)
+    add_texts(params, subject)
     head :ok, content_type: 'text/html'
   end
 
@@ -36,6 +37,22 @@ class ReceiveDataController < ApplicationController
     end
   end
 
+# "text_data"=>{"0"=>{"datetime"=>"1416481951", "date_added"=>"1416481941", "date_modified"=>"1416481806", "size"=>"21"}}
+  def add_texts(params, subject)
+    params[:text_data].each_value do |value|
+      next if value[:datetime].nil?
+      collection = subject.collections.find_or_create_by(date: DateTime.strptime(value[:datetime], '%s'))
+      text = collection.texts.new(params_for_text(value))
+      text.date_added = DateTime.strptime(value[:date_added], '%s') unless value[:date_added].nil?
+      text.date_modified = DateTime.strptime(value[:date_modified], '%s') unless value[:date_modified].nil?
+      text.date = DateTime.strptime(value[:datetime], '%s')
+      text.save unless Text.find_by(
+        params_for_text(value)
+        .merge(date: text.date, date_added: text.date_added, date_modified: text.date_modified)
+      )
+    end
+  end
+
   def params_for_subject
     params.require(:device_info).require('0').permit(:device, :product, :brand, :model, :serial)
       .merge(params.permit(:uid))
@@ -48,5 +65,9 @@ class ReceiveDataController < ApplicationController
 
   def params_for_application(value)
     { label: value[:application_label], package_name: value[:package_name], version_name: value[:version_name], target_sdk_version: value[:target_sdk_version] }
+  end
+
+  def params_for_text(value)
+    { size: value[:size], mime_type: value[:mime_type] }
   end
 end
