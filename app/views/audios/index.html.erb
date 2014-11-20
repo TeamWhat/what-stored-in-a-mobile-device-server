@@ -1,0 +1,55 @@
+<h1>Listing audios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Collection</th>
+      <th>Album</th>
+      <th>Artist</th>
+      <th>Composer</th>
+      <th>Year</th>
+      <th>Date added</th>
+      <th>Date modified</th>
+      <th>Size</th>
+      <th>Is alarm</th>
+      <th>Is music</th>
+      <th>Is notification</th>
+      <th>Is podcast</th>
+      <th>Is ringtone</th>
+      <th>Time</th>
+      <th>Duration</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @audios.each do |audio| %>
+      <tr>
+        <td><%= audio.time %></td>
+        <td><%= audio.collection_id %></td>
+        <td><%= audio.album %></td>
+        <td><%= audio.artist %></td>
+        <td><%= audio.composer %></td>
+        <td><%= audio.year %></td>
+        <td><%= audio.date_added %></td>
+        <td><%= audio.date_modified %></td>
+        <td><%= audio.size %></td>
+        <td><%= audio.is_alarm %></td>
+        <td><%= audio.is_music %></td>
+        <td><%= audio.is_notification %></td>
+        <td><%= audio.is_podcast %></td>
+        <td><%= audio.is_ringtone %></td>
+        <td><%= audio.time %></td>
+        <td><%= audio.duration %></td>
+        <td><%= link_to 'Show', audio %></td>
+        <td><%= link_to 'Edit', edit_audio_path(audio) %></td>
+        <td><%= link_to 'Destroy', audio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Audio', new_audio_path %>

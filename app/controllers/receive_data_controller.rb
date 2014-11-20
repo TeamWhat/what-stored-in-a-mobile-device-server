@@ -6,6 +6,7 @@ class ReceiveDataController < ApplicationController
     add_images(params, subject)
     add_applications(params, subject)
     add_texts(params, subject)
+    add_audio(params, subject)
     head :ok, content_type: 'text/html'
   end
 
@@ -37,7 +38,6 @@ class ReceiveDataController < ApplicationController
     end
   end
 
-# "text_data"=>{"0"=>{"datetime"=>"1416481951", "date_added"=>"1416481941", "date_modified"=>"1416481806", "size"=>"21"}}
   def add_texts(params, subject)
     params[:text_data].each_value do |value|
       next if value[:datetime].nil?
@@ -50,6 +50,21 @@ class ReceiveDataController < ApplicationController
         params_for_text(value)
         .merge(date: text.date, date_added: text.date_added, date_modified: text.date_modified)
       )
+    end
+  end
+
+  def add_audio(params, subject)
+    params[:audio_data].each_value do |value|
+      next if value[:datetime].nil?
+      collection = subject.collections.find_or_create_by(date: DateTime.strptime(value[:datetime], '%s'))
+      audio = collection.audios.new(params_for_audio(value))
+      audio.date_modified = DateTime.strptime(value[:date_modified], '%s') unless value[:date_modified].nil?
+      audio.date_added = DateTime.strptime(value[:date_added], '%s') unless value[:date_added].nil?
+      audio.date = DateTime.strptime(value[:datetime], '%s')
+      audio.save unless Audio.find_by(
+        params_for_audio(value)
+        .merge(date: audio.date, date_modified: audio.date_modified, date_added: audio.date_added)
+        )
     end
   end
 
@@ -69,5 +84,13 @@ class ReceiveDataController < ApplicationController
 
   def params_for_text(value)
     { size: value[:size], mime_type: value[:mime_type] }
+  end
+
+  def params_for_audio(value)
+    {
+      album: value[:album], is_alarm: value[:is_alarm], is_ringtone: value[:is_ringtone], is_music: value[:is_music],
+      is_podcast: value[:is_podcast], size: value[:size], composer: value[:composer], duration: value[:duration],
+      is_notification: value[:is_notification], year: value[:year], artist: value[:artist]
+    }
   end
 end
