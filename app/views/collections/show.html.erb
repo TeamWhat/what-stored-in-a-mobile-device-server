@@ -89,5 +89,54 @@
   </tbody>
 </table>
 
+<h3>Audio files</h3>
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Collection</th>
+      <th>Album</th>
+      <th>Artist</th>
+      <th>Composer</th>
+      <th>Year</th>
+      <th>Date added</th>
+      <th>Date modified</th>
+      <th>Size</th>
+      <th>Is alarm</th>
+      <th>Is music</th>
+      <th>Is notification</th>
+      <th>Is podcast</th>
+      <th>Is ringtone</th>
+      <th>Time</th>
+      <th>Duration</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @collection.audios.each do |audio| %>
+      <tr>
+        <td><%= audio.date %></td>
+        <td><%= audio.collection_id %></td>
+        <td><%= audio.album %></td>
+        <td><%= audio.artist %></td>
+        <td><%= audio.composer %></td>
+        <td><%= audio.year %></td>
+        <td><%= audio.date_added %></td>
+        <td><%= audio.date_modified %></td>
+        <td><%= audio.size %></td>
+        <td><%= audio.is_alarm %></td>
+        <td><%= audio.is_music %></td>
+        <td><%= audio.is_notification %></td>
+        <td><%= audio.is_podcast %></td>
+        <td><%= audio.is_ringtone %></td>
+        <td><%= audio.date %></td>
+        <td><%= audio.duration %></td>
+        <td><%= link_to 'Show', audio %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_collection_path(@collection) %> |
 <%= link_to 'Back', collections_path %>

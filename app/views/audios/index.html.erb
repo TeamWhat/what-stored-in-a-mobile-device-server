@@ -1,6 +1,6 @@
 <h1>Listing audios</h1>
 
-<table>
+<table class="table table-condensed table-hover">
   <thead>
     <tr>
       <th>Time</th>
@@ -26,7 +26,7 @@
   <tbody>
     <% @audios.each do |audio| %>
       <tr>
-        <td><%= audio.time %></td>
+        <td><%= audio.date %></td>
         <td><%= audio.collection_id %></td>
         <td><%= audio.album %></td>
         <td><%= audio.artist %></td>
@@ -40,7 +40,7 @@
         <td><%= audio.is_notification %></td>
         <td><%= audio.is_podcast %></td>
         <td><%= audio.is_ringtone %></td>
-        <td><%= audio.time %></td>
+        <td><%= audio.date %></td>
         <td><%= audio.duration %></td>
         <td><%= link_to 'Show', audio %></td>
         <td><%= link_to 'Edit', edit_audio_path(audio) %></td>
