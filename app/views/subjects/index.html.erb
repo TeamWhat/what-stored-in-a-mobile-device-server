@@ -4,6 +4,9 @@
   <thead>
     <tr>
       <th>First seen</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Country</th>
       <th>Brand</th>
       <th>Model</th>
       <th>Device</th>
@@ -17,6 +20,9 @@
     <% @subjects.each do |subject| %>
       <tr>
         <td><%= subject.date %></td>
+        <td><%= subject.gender %></td>
+        <td><%= subject.age %></td>
+        <td><%= subject.country %></td>
         <td><%= subject.brand %></td>
         <td><%= subject.model %></td>
         <td><%= subject.device %></td>
