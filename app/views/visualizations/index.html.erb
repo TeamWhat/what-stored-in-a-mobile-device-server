@@ -1,22 +1,15 @@
 <div class="row">
-    <div class="col-md-6">
-      <h2 class="h2">Subject phone brands</h2>
-      <%= pie_chart Subject.group(:brand).count %>
-    </div>
-    <div class="col-md-6">
-      <h2 class="h2">Average image size in a collection</h2>
-      <%= column_chart Image.group(:collection).average(:size) %>
-    </div>
+
+  <div class="col-md-6">
+    <h2 class="h2">Subject phone brands</h2>
+    <%= pie_chart @brand_count %>
+  </div>
 </div>
 
 
 <div class="row">
-    <div class="col-md-6">
-      <h2 class="h2">Images taken on a date</h2>
-      <%= line_chart Image.group(:date_taken).count %>
-    </div>
-    <div class="col-md-6">
-      <h2 class="h2">Collections per subject</h2>
-      <%= bar_chart Collection.group(:subject).count %>
-    </div>
+  <div>
+    <h2 class="h2">File age</h2>
+    <%= column_chart ({"Image" => Image.average_image_file_age, "Text" => @average_age}) %>
+  </div>
 </div>
