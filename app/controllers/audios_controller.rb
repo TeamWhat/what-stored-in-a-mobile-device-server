@@ -4,6 +4,7 @@ respond_to :html, :json, except: :index
 
   def index
     @audios = Audio.all
+    @audio_count = Audio.all.count
     respond_to do |format|
       format.html
       format.csv { send_data @audios.to_csv }
