@@ -2,7 +2,7 @@ class ReceiveDataController < ApplicationController
   require 'date'
 
   def receive
-    subject = Subject.find_or_create(params_for_subject, params[:device_info]['0'][:datetime])
+    subject = Subject.find_or_create(params_for_subject, params[:device_info]['0'][:datetime], params[:personal_info][:email])
     add_images(params, subject)
     add_applications(params, subject)
     add_texts(params, subject)

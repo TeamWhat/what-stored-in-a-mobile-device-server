@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe ReceiveDataController, type: :controller do
 
   context 'with valid data' do
+    let(:email) { 'example@example.com' }
     let(:data) do
       {
         uid: "�g�i._i��;�b\\a0005'p87k�k��KGP�HA���",
@@ -29,11 +30,10 @@ RSpec.describe ReceiveDataController, type: :controller do
           }
         },
         personal_info: {
-          '0' => {
-            gender: 'male',
-            age: 132,
-            country: 'CCCP'
-          }
+          gender: 'male',
+          age: 132,
+          country: 'CCCP',
+          email: email
         },
         application_data: {
           '0' => {
@@ -53,20 +53,20 @@ RSpec.describe ReceiveDataController, type: :controller do
         },
         audio_data: {
           '0' => {
-              datetime: '1413189832',
-              artist: 'Tester',
-              year: '1776',
-              date_added: '1416491308',
-              date_modified: '1416491308',
-              is_notification: '0',
-              is_podcast: '0',
-              is_music: '0',
-              is_ringtone: '0',
-              is_alarm: '0',
-              duration: '0',
-              composer: '0',
-              size: '56',
-              album: 'test music'
+            datetime: '1413189832',
+            artist: 'Tester',
+            year: '1776',
+            date_added: '1416491308',
+            date_modified: '1416491308',
+            is_notification: '0',
+            is_podcast: '0',
+            is_music: '0',
+            is_ringtone: '0',
+            is_alarm: '0',
+            duration: '0',
+            composer: '0',
+            size: '56',
+            album: 'test music'
           }
         }
       }
@@ -112,14 +112,42 @@ RSpec.describe ReceiveDataController, type: :controller do
           expect(audio.size.to_s).to eq(data[:audio_data]['0'][:size])
         end
       end
+
+      describe 'email' do
+        it 'has been saved' do
+          expect(Email.last.email).to eq(data[:personal_info][:email])
+        end
+      end
     end
 
-    describe 'latter submission' do
-      it "doesn't create a new subject" do
+    context 'after submission' do
+      before :each do
         post 'receive', data
-        post 'receive', data
-        expect(Subject.count).to eq(1)
       end
+
+      describe 'another submission' do
+        before :each do
+          post 'receive', data
+        end
+
+        it "doesn't create a new subject" do
+          expect(Subject.count).to eq(1)
+        end
+
+        it "doesn't save email again" do
+          expect(Email.count).to eq(1)
+        end
+
+        describe 'with different email' do
+          let(:email) { 'you@you.fi' }
+
+          it "doesn't create a new email" do
+            post 'receive', data
+            expect(Email.count).to eq(1)
+          end
+        end
+      end
+
     end
   end
 end

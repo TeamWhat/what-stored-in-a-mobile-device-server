@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :emails
+
   resources :texts
   resources :audios
   resources :applications
