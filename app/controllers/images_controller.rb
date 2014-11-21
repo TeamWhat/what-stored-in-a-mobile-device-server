@@ -5,6 +5,7 @@ class ImagesController < ApplicationController
   # GET /images.json
   def index
     @images = Image.all
+    @image_count = Image.all.count
     respond_to do |format|
       format.html
       format.csv { send_data @images.to_csv }

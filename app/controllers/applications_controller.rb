@@ -4,6 +4,7 @@ class ApplicationsController < ApplicationController
 
   def index
     @applications = Application.all
+    @application_count = Application.all.count
     respond_to do |format|
       format.html
       format.csv { send_data @applications.to_csv }
