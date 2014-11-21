@@ -46,6 +46,6 @@ class ApplicationsController < ApplicationController
   end
 
   def application_params
-    params.require(:application).permit(:label, :package_name, :first_installed, :version_name, :target_sdk_version)
+    params.require(:application).permit(:date, :label, :package_name, :first_installed, :version_name, :target_sdk_version)
   end
 end
