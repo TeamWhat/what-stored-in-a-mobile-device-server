@@ -19,7 +19,7 @@ class Image < ActiveRecord::Base
     Image.all.each do |image|
       average_age = average_age + image.date.to_time.to_i - image.date_taken.to_time.to_i
     end
-    average_age = average_age/number_of_images
+    average_age = average_age/number_of_images unless number_of_images == 0
     # Convert seconds into hours
     average_age/86400
   end

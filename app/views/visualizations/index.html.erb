@@ -6,10 +6,9 @@
   </div>
 </div>
 
-
 <div class="row">
   <div>
-    <h2 class="h2">File age</h2>
-    <%= column_chart ({"Image" => Image.average_image_file_age, "Text" => @average_age}) %>
+    <h2 class="h2">Average file age in days</h2>
+    <%= column_chart ({"Image" => @average_image_file_age, "Text" => @average_text_file_age}) %>
   </div>
 </div>

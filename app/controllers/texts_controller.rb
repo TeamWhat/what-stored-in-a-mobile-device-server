@@ -9,7 +9,6 @@ class TextsController < ApplicationController
       format.csv { send_data @texts.to_csv }
       format.xls
     end
-    @average_age = Text.average_text_file_age
   end
 
   def show
