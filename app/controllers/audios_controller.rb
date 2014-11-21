@@ -46,6 +46,6 @@ respond_to :html, :json, except: :index
   end
 
   def audio_params
-    params.require(:audio).permit(:time, :collection_id, :album, :artist, :composer, :year, :date_added, :date_modified, :size, :is_alarm, :is_music, :is_notification, :is_podcast, :is_ringtone, :duration)
+    params.require(:audio).permit(:date, :time, :collection_id, :album, :artist, :composer, :year, :date_added, :date_modified, :size, :is_alarm, :is_music, :is_notification, :is_podcast, :is_ringtone, :duration)
   end
 end
