@@ -7,12 +7,13 @@ class Subject < ActiveRecord::Base
   validates_uniqueness_of :uid
   validates_presence_of :uid
 
-  def self.find_or_create(params_for_subject, datetime)
+  def self.find_or_create(params_for_subject, datetime, email)
     subject = Subject.find_by uid: params_for_subject[:uid]
     if subject.nil?
       subject = Subject.new(params_for_subject)
       subject.date = DateTime.strptime(datetime, '%s') unless datetime.nil?
       subject.save
+      Email.create(email: email)
     end
     subject
   end

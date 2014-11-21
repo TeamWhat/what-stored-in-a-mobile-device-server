@@ -1,5 +1,5 @@
 class AudiosController < ApplicationController
-respond_to :html, :json, except: :index
+  respond_to :html, :json, except: :index
   before_action :set_audio, only: [:show, :edit, :update, :destroy]
 
   def index
