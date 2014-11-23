@@ -7,29 +7,21 @@
   <Worksheet ss:Name="Sheet1">
     <Table>
       <Row>
-        <Cell><Data ss:Type="String">ID</Data></Cell>
-        <Cell><Data ss:Type="String">collection ID</Data></Cell>
         <Cell><Data ss:Type="String">Date</Data></Cell>
         <Cell><Data ss:Type="String">Label</Data></Cell>
         <Cell><Data ss:Type="String">Package name</Data></Cell>
         <Cell><Data ss:Type="String">First installed</Data></Cell>
         <Cell><Data ss:Type="String">Version name</Data></Cell>
         <Cell><Data ss:Type="String">Target sdk version</Data></Cell>
-        <Cell><Data ss:Type="String">Created at</Data></Cell>
-        <Cell><Data ss:Type="String">Updated at</Data></Cell>
       </Row>
       <% @applications.each do |application| %>
           <Row>
-            <Cell><Data ss:Type="String"><%= application.id %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= application.collection_id %></Data></Cell>
             <Cell><Data ss:Type="String"><%= application.date %></Data></Cell>
             <Cell><Data ss:Type="String"><%= application.label %></Data></Cell>
             <Cell><Data ss:Type="String"><%= application.package_name %></Data></Cell>
             <Cell><Data ss:Type="String"><%= application.first_installed %></Data></Cell>
             <Cell><Data ss:Type="String"><%= application.version_name %></Data></Cell>
             <Cell><Data ss:Type="String"><%= application.target_sdk_version %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= application.created_at %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= application.updated_at %></Data></Cell>
           </Row>
       <% end %>
     </Table>

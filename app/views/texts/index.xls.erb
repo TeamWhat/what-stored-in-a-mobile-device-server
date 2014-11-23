@@ -7,27 +7,19 @@
   <Worksheet ss:Name="Sheet1">
     <Table>
       <Row>
-        <Cell><Data ss:Type="String">ID</Data></Cell>
-        <Cell><Data ss:Type="String">collection ID</Data></Cell>
         <Cell><Data ss:Type="String">Date</Data></Cell>
         <Cell><Data ss:Type="String">Size</Data></Cell>
         <Cell><Data ss:Type="String">Date modified</Data></Cell>
         <Cell><Data ss:Type="String">Date added</Data></Cell>
         <Cell><Data ss:Type="String">Mime type</Data></Cell>
-        <Cell><Data ss:Type="String">Created at</Data></Cell>
-        <Cell><Data ss:Type="String">Updated at</Data></Cell>
       </Row>
       <% @texts.each do |text| %>
           <Row>
-            <Cell><Data ss:Type="String"><%= text.id %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= text.collection_id %></Data></Cell>
             <Cell><Data ss:Type="String"><%= text.date %></Data></Cell>
             <Cell><Data ss:Type="String"><%= text.size %></Data></Cell>
             <Cell><Data ss:Type="String"><%= text.date_modified %></Data></Cell>
             <Cell><Data ss:Type="String"><%= text.date_added %></Data></Cell>
             <Cell><Data ss:Type="String"><%= text.mime_type %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= text.created_at %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= text.updated_at %></Data></Cell>
           </Row>
       <% end %>
     </Table>

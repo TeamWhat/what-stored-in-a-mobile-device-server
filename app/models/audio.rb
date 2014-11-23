@@ -3,10 +3,11 @@ class Audio < ActiveRecord::Base
   has_one :subject, through: :collection
 
   def self.to_csv(options = {})
+    names = column_names - ['collection_id', 'id', 'created_at', 'updated_at']
     CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |image|
-        csv << image.attributes.values_at(*column_names)
+      csv << names
+      all.each do |object|
+        csv << object.attributes.values_at(*names)
       end
     end
   end

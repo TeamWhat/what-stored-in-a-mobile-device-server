@@ -1,6 +1,6 @@
 <h1>Listing emails</h1>
 
-<table>
+<table class="table table-condensed table-hover">
   <thead>
     <tr>
       <th>Email</th>
@@ -23,3 +23,9 @@
 <br>
 
 <%= link_to 'New Email', new_email_path %>
+
+<p>
+  Download:
+  <%= link_to "CSV", emails_path(format: "csv") %> |
+  <%= link_to "Excel", emails_path(format: "xls") %>
+</p>

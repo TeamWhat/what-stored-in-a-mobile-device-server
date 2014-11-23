@@ -20,7 +20,7 @@ class Subject < ActiveRecord::Base
   end
 
   def self.to_csv(options = {})
-    names = column_names - ['uid']
+    names = column_names - ['uid', 'id', 'created_at', 'updated_at']
     CSV.generate(options) do |csv|
       csv << names
       all.each do |object|

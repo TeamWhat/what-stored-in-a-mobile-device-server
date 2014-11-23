@@ -1,9 +1,14 @@
 class EmailsController < ApplicationController
+  respond_to :html, :json, except: :index
   before_action :set_email, only: [:show, :edit, :update, :destroy]
 
   def index
     @emails = Email.all
-    respond_with(@emails)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @emails.to_csv }
+      format.xls
+    end
   end
 
   def show
