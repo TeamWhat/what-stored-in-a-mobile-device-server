@@ -8,7 +8,7 @@ Then /^I can export an xls file$/ do
   click_link('Excel')
   expect(page.html).to have_content('52.1')
   expect(page.html).to have_content('5026')
-  expect(page.html).to have_content('collection ID')
+  expect(page.html).to have_content('Longitude')
 end
 
 Then /^I can not export data$/ do

@@ -1,4 +1,6 @@
 class Subject < ActiveRecord::Base
+  extend Csvable
+
   has_many :collections, dependent: :destroy
   has_many :images, through: :collections
   has_many :applications, through: :collections
@@ -17,15 +19,5 @@ class Subject < ActiveRecord::Base
     end
     subject.version = params_for_subject[:version]
     subject
-  end
-
-  def self.to_csv(options = {})
-    names = column_names - ['uid', 'id', 'created_at', 'updated_at']
-    CSV.generate(options) do |csv|
-      csv << names
-      all.each do |object|
-        csv << object.attributes.values_at(*names)
-      end
-    end
   end
 end
