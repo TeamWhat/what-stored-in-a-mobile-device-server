@@ -3,68 +3,35 @@ class ReceiveDataController < ApplicationController
 
   def receive
     subject = Subject.find_or_create(params_for_subject, params[:device_info]['0'][:datetime], params[:personal_info][:email])
-    add_images(params, subject)
-    add_applications(params, subject)
-    add_texts(params, subject)
-    add_audio(params, subject)
+    add_data(params, subject, 'image')
+    add_data(params, subject, 'application')
+    add_data(params, subject, 'text')
+    add_data(params, subject, 'audio')
     head :ok, content_type: 'text/html'
   end
 
   private
 
-  def add_images(params, subject)
-    params[:image_info].each_value do |value|
+  def add_data(params, subject, type)
+    params[eval(':' + type + '_data')].each_value do |value|
       next if value[:datetime].nil?
       collection = subject.collections.find_or_create_by(date: DateTime.strptime(value[:datetime], '%s'))
-      image = collection.images.new(params_for_image(value))
-      image.date_added = DateTime.strptime(value[:date_added], '%s') unless value[:date_added].nil?
-      image.date_modified = DateTime.strptime(value[:date_modified], '%s') unless value[:date_modified].nil?
-      image.date_taken = DateTime.strptime(value[:date_taken], '%s') unless value[:date_taken].nil?
-      image.date = DateTime.strptime(value[:datetime], '%s')
-      # TODO: Delete unless from following line after we have changed Android to only send unsent data
-      image.save unless Image.find_by(params_for_image(value).merge(date: image.date, date_added: image.date_added, date_modified: image.date_modified, date_taken: image.date_taken))
+      datum = eval('collection.' + type + 's.new(params_for_' + type + '(value))')
+      datum.date = DateTime.strptime(value[:datetime], '%s')
+      datum.date_added = DateTime.strptime(value[:date_added], '%s') if datum.respond_to?(:date_added) unless value[:date_added].nil?
+      datum.date_modified = DateTime.strptime(value[:date_modified], '%s') if datum.respond_to?(:date_modified) unless value[:date_modified].nil?
+      datum.date_taken = DateTime.strptime(value[:date_taken], '%s') if datum.respond_to?(:date_taken) unless value[:date_taken].nil?
+      datum.first_installed = DateTime.strptime(value[:first_installed], '%s') if datum.respond_to?(:first_installed) unless value[:first_installed].nil?
+
+      datum.save unless eval(datum.to_s + '.find_by(params_for_' + type + '(value).merge(date: datum.date).merge(eval(extra_columns(type))))' )
     end
   end
 
-  def add_applications(params, subject)
-    params[:application_data].each_value do |value|
-      next if value[:datetime].nil?
-      collection = subject.collections.find_or_create_by(date: DateTime.strptime(value[:datetime], '%s'))
-      application = collection.applications.new(params_for_application(value))
-      application.first_installed = DateTime.strptime(value[:first_installed], '%s') unless value[:first_installed].nil?
-      application.date = DateTime.strptime(value[:datetime], '%s')
-      # TODO: Delete unless from following line after we have changed Android to only send unsent data
-      application.save unless Application.find_by(params_for_application(value).merge(date: application.date, first_installed: application.first_installed))
-    end
-  end
-
-  def add_texts(params, subject)
-    params[:text_data].each_value do |value|
-      next if value[:datetime].nil?
-      collection = subject.collections.find_or_create_by(date: DateTime.strptime(value[:datetime], '%s'))
-      text = collection.texts.new(params_for_text(value))
-      text.date_added = DateTime.strptime(value[:date_added], '%s') unless value[:date_added].nil?
-      text.date_modified = DateTime.strptime(value[:date_modified], '%s') unless value[:date_modified].nil?
-      text.date = DateTime.strptime(value[:datetime], '%s')
-      text.save unless Text.find_by(
-        params_for_text(value)
-        .merge(date: text.date, date_added: text.date_added, date_modified: text.date_modified)
-      )
-    end
-  end
-
-  def add_audio(params, subject)
-    params[:audio_data].each_value do |value|
-      next if value[:datetime].nil?
-      collection = subject.collections.find_or_create_by(date: DateTime.strptime(value[:datetime], '%s'))
-      audio = collection.audios.new(params_for_audio(value))
-      audio.date_modified = DateTime.strptime(value[:date_modified], '%s') unless value[:date_modified].nil?
-      audio.date_added = DateTime.strptime(value[:date_added], '%s') unless value[:date_added].nil?
-      audio.date = DateTime.strptime(value[:datetime], '%s')
-      audio.save unless Audio.find_by(
-        params_for_audio(value)
-        .merge(date: audio.date, date_modified: audio.date_modified, date_added: audio.date_added)
-        )
+  def extra_columns(type)
+    case type
+      when 'image' then 'date_added: datum.date_added, date_modified: datum.date_modified, date_taken: datum.date_taken'
+      when 'application' then 'first_installed: application.first_installed'
+      else 'date_added: datum.date_added, date_modified: datum.date_modified'
     end
   end
 
