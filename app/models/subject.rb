@@ -15,6 +15,7 @@ class Subject < ActiveRecord::Base
       subject.save
       Email.create(email: email)
     end
+    subject.version = params_for_subject[:version]
     subject
   end
 

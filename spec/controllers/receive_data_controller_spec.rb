@@ -4,6 +4,7 @@ RSpec.describe ReceiveDataController, type: :controller do
 
   context 'with valid data' do
     let(:email) { 'example@example.com' }
+    let(:version) { '2.0' }
     let(:data) do
       {
         uid: "�g�i._i��;�b\\a0005'p87k�k��KGP�HA���",
@@ -26,7 +27,8 @@ RSpec.describe ReceiveDataController, type: :controller do
             brand: 'Google',
             model: 'asd',
             serial: 'x6382f11c7ee04a',
-            datetime: '1413189832'
+            datetime: '1413189832',
+            version: version
           }
         },
         personal_info: {
@@ -144,6 +146,14 @@ RSpec.describe ReceiveDataController, type: :controller do
           it "doesn't create a new email" do
             post 'receive', data
             expect(Email.count).to eq(1)
+          end
+        end
+
+        describe 'with different version' do
+          let(:version) { '4.2' }
+
+          it 'updates the database' do
+            expect(Subject.last.version).to eq('4.2')
           end
         end
       end
