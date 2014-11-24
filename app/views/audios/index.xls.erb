@@ -7,8 +7,6 @@
   <Worksheet ss:Name="Sheet1">
     <Table>
       <Row>
-        <Cell><Data ss:Type="String">ID</Data></Cell>
-        <Cell><Data ss:Type="String">collection ID</Data></Cell>
         <Cell><Data ss:Type="String">Date</Data></Cell>
         <Cell><Data ss:Type="String">Album</Data></Cell>
         <Cell><Data ss:Type="String">Artist</Data></Cell>
@@ -23,13 +21,9 @@
         <Cell><Data ss:Type="String">Is podcast</Data></Cell>
         <Cell><Data ss:Type="String">Is ringtone</Data></Cell>
         <Cell><Data ss:Type="String">Duration</Data></Cell>
-        <Cell><Data ss:Type="String">Created at</Data></Cell>
-        <Cell><Data ss:Type="String">Updated at</Data></Cell>
       </Row>
       <% @audios.each do |audio| %>
           <Row>
-            <Cell><Data ss:Type="String"><%= audio.id %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= audio.collection_id %></Data></Cell>
             <Cell><Data ss:Type="String"><%= audio.date %></Data></Cell>
             <Cell><Data ss:Type="String"><%= audio.album %></Data></Cell>
             <Cell><Data ss:Type="String"><%= audio.artist %></Data></Cell>
@@ -44,8 +38,6 @@
             <Cell><Data ss:Type="String"><%= audio.is_podcast %></Data></Cell>
             <Cell><Data ss:Type="String"><%= audio.is_ringtone %></Data></Cell>
             <Cell><Data ss:Type="String"><%= audio.duration %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= audio.created_at %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= audio.updated_at %></Data></Cell>
           </Row>
       <% end %>
     </Table>

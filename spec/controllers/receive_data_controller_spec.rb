@@ -8,7 +8,7 @@ RSpec.describe ReceiveDataController, type: :controller do
     let(:data) do
       {
         uid: "�g�i._i��;�b\\a0005'p87k�k��KGP�HA���",
-        image_info: {
+        image_data: {
           '0' => {
             is_private: 'null',
             longitude: '60.2',
@@ -90,7 +90,7 @@ RSpec.describe ReceiveDataController, type: :controller do
       describe 'images' do
         it 'have been saved' do
           image = @subject.collections.last.images.last
-          expect(image.latitude.to_s).to eq(data[:image_info]['0'][:latitude])
+          expect(image.latitude.to_s).to eq(data[:image_data]['0'][:latitude])
         end
       end
 
