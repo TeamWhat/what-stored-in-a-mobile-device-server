@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125125330) do
+ActiveRecord::Schema.define(version: 20141125134217) do
 
   create_table "applications", force: true do |t|
     t.string   "label"
@@ -52,12 +52,6 @@ ActiveRecord::Schema.define(version: 20141125125330) do
     t.datetime "date"
   end
 
-  create_table "demos", force: true do |t|
-    t.string   "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "emails", force: true do |t|
     t.string   "email"
     t.datetime "created_at"
@@ -77,6 +71,26 @@ ActiveRecord::Schema.define(version: 20141125125330) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "size"
+  end
+
+  create_table "musics", force: true do |t|
+    t.datetime "time"
+    t.integer  "collection_id"
+    t.string   "album"
+    t.string   "artist"
+    t.string   "composer"
+    t.integer  "year"
+    t.datetime "date_added"
+    t.datetime "date_modified"
+    t.integer  "size"
+    t.string   "is_alarm"
+    t.string   "is_music"
+    t.string   "is_notification"
+    t.string   "is_podcast"
+    t.string   "is_ringtone"
+    t.integer  "duration"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subjects", force: true do |t|
