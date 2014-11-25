@@ -9,12 +9,14 @@
       <Row>
         <Cell><Data ss:Type="String">Id</Data></Cell>
         <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Entries</Data></Cell>
         <Cell><Data ss:Type="String">Created at</Data></Cell>
       </Row>
       <% @emails.each do |email| %>
           <Row>
             <Cell><Data ss:Type="String"><%= email.id %></Data></Cell>
             <Cell><Data ss:Type="String"><%= email.email %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= email.entries %></Data></Cell>
             <Cell><Data ss:Type="String"><%= email.created_at %></Data></Cell>
           </Row>
       <% end %>
