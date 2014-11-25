@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121121208) do
+ActiveRecord::Schema.define(version: 20141121132334) do
 
   create_table "applications", force: true do |t|
     t.string   "label"
@@ -120,5 +120,27 @@ ActiveRecord::Schema.define(version: 20141121121208) do
   end
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true
+
+  create_table "videos", force: true do |t|
+    t.string   "tags"
+    t.string   "album"
+    t.string   "resolution"
+    t.string   "size"
+    t.string   "category"
+    t.integer  "duration"
+    t.datetime "date_added"
+    t.datetime "date_modified"
+    t.datetime "date_taken"
+    t.string   "description"
+    t.string   "is_private"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.string   "artist"
+    t.string   "language"
+    t.datetime "date"
+    t.integer  "collection_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -1,0 +1,57 @@
+<h1>Listing videos</h1>
+
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Tags</th>
+      <th>Album</th>
+      <th>Resolution</th>
+      <th>Size</th>
+      <th>Category</th>
+      <th>Duration</th>
+      <th>Date added</th>
+      <th>Date modified</th>
+      <th>Date taken</th>
+      <th>Description</th>
+      <th>Is private</th>
+      <th>Longitude</th>
+      <th>Latitude</th>
+      <th>Artist</th>
+      <th>Language</th>
+      <th>Date</th>
+      <th>Collection</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @videos.each do |video| %>
+      <tr>
+        <td><%= video.tags %></td>
+        <td><%= video.album %></td>
+        <td><%= video.resolution %></td>
+        <td><%= video.size %></td>
+        <td><%= video.category %></td>
+        <td><%= video.duration %></td>
+        <td><%= video.date_added %></td>
+        <td><%= video.date_modified %></td>
+        <td><%= video.date_taken %></td>
+        <td><%= video.description %></td>
+        <td><%= video.is_private %></td>
+        <td><%= video.longitude %></td>
+        <td><%= video.latitude %></td>
+        <td><%= video.artist %></td>
+        <td><%= video.language %></td>
+        <td><%= video.date %></td>
+        <td><%= video.collection_id %></td>
+        <td><%= link_to 'Show', video %></td>
+        <td><%= link_to 'Edit', edit_video_path(video) %></td>
+        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Video', new_video_path %>

@@ -7,6 +7,7 @@ class ReceiveDataController < ApplicationController
     add_data(params, subject, 'application')
     add_data(params, subject, 'text')
     add_data(params, subject, 'audio')
+    add_data(params, subject, 'video')
     head :ok, content_type: 'text/html'
   end
 
@@ -58,6 +59,23 @@ class ReceiveDataController < ApplicationController
       album: value[:album], is_alarm: value[:is_alarm], is_ringtone: value[:is_ringtone], is_music: value[:is_music],
       is_podcast: value[:is_podcast], size: value[:size], composer: value[:composer], duration: value[:duration],
       is_notification: value[:is_notification], year: value[:year], artist: value[:artist]
+    }
+  end
+
+  def params_for_video(value)
+    {
+      tags: value[:tags],
+      album: value[:album],
+      resolution: value[:resolution],
+      size: value[:size],
+      category: value[:category],
+      duration: value[:duration],
+      description: value[:description],
+      is_private: value[:is_private],
+      longitude: value[:longitude],
+      latitude: value[:latitude],
+      artist: value[:artist],
+      language: value[:language]
     }
   end
 end

@@ -1,0 +1,89 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @video.tags %>
+</p>
+
+<p>
+  <strong>Album:</strong>
+  <%= @video.album %>
+</p>
+
+<p>
+  <strong>Resolution:</strong>
+  <%= @video.resolution %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @video.size %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @video.category %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @video.duration %>
+</p>
+
+<p>
+  <strong>Date added:</strong>
+  <%= @video.date_added %>
+</p>
+
+<p>
+  <strong>Date modified:</strong>
+  <%= @video.date_modified %>
+</p>
+
+<p>
+  <strong>Date taken:</strong>
+  <%= @video.date_taken %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @video.description %>
+</p>
+
+<p>
+  <strong>Is private:</strong>
+  <%= @video.is_private %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @video.longitude %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @video.latitude %>
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @video.artist %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @video.language %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @video.date %>
+</p>
+
+<p>
+  <strong>Collection:</strong>
+  <%= @video.collection_id %>
+</p>
+
+<%= link_to 'Edit', edit_video_path(@video) %> |
+<%= link_to 'Back', videos_path %>
