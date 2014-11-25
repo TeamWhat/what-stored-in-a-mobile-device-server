@@ -4,15 +4,6 @@ class Image < ActiveRecord::Base
   belongs_to :collection
   has_one :subject, through: :collection
 
-  def self.to_csv(options = {})
-    CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |image|
-        csv << image.attributes.values_at(*column_names)
-      end
-    end
-  end
-
   def self.average_image_file_age
     number_of_images = Image.all.count
     average_age = 0
@@ -25,6 +16,7 @@ class Image < ActiveRecord::Base
   end
 
   def self.minimum_image_file_age
+    return -1 if Image.all.empty?
     image_ages = Array.new
     Image.all.each do |image|
       image_ages.push(image.date.to_time.to_i - image.date_added.to_time.to_i)
@@ -33,6 +25,7 @@ class Image < ActiveRecord::Base
   end
 
   def self.maximum_image_file_age
+    return -1 if Image.all.empty?
     image_ages = Array.new
     Image.all.each do |image|
       image_ages.push(image.date.to_time.to_i - image.date_added.to_time.to_i)

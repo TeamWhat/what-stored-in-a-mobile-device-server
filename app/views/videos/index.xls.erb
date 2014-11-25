@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Id</Data></Cell>
+        <Cell><Data ss:Type="String">Date</Data></Cell>
+        <Cell><Data ss:Type="String">Album</Data></Cell>
+        <Cell><Data ss:Type="String">Artist</Data></Cell>
+        <Cell><Data ss:Type="String">Language</Data></Cell>
+        <Cell><Data ss:Type="String">Description</Data></Cell>
+        <Cell><Data ss:Type="String">Date added</Data></Cell>
+        <Cell><Data ss:Type="String">Date modified</Data></Cell>
+        <Cell><Data ss:Type="String">Date taken</Data></Cell>
+        <Cell><Data ss:Type="String">Size</Data></Cell>
+        <Cell><Data ss:Type="String">Latitude</Data></Cell>
+        <Cell><Data ss:Type="String">Longitude</Data></Cell>
+        <Cell><Data ss:Type="String">Is private</Data></Cell>
+        <Cell><Data ss:Type="String">Tags</Data></Cell>
+        <Cell><Data ss:Type="String">Category</Data></Cell>
+        <Cell><Data ss:Type="String">Resolution</Data></Cell>
+        <Cell><Data ss:Type="String">Duration</Data></Cell>
+        <Cell><Data ss:Type="String">Created at</Data></Cell>
+        <Cell><Data ss:Type="String">Collection id</Data></Cell>
+      </Row>
+      <% @videos.each do |video| %>
+          <Row>
+            <Cell><Data ss:Type="String"><%= video.id %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.date %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.album %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.artist %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.language %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.description %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.date_added %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.date_modified %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.date_taken %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.size %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.latitude %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.longitude %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.is_private %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.tags %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.category %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.resolution %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.duration %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.created_at %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= video.collection_id %></Data></Cell>
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

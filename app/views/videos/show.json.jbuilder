@@ -1,0 +1,1 @@
+json.extract! @video, :id, :tags, :album, :resolution, :size, :category, :duration, :date_added, :date_modified, :date_taken, :description, :is_private, :longitude, :latitude, :artist, :language, :date, :collection_id, :created_at, :updated_at

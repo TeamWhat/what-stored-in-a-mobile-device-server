@@ -7,6 +7,7 @@
   <Worksheet ss:Name="Sheet1">
     <Table>
       <Row>
+        <Cell><Data ss:Type="String">Id</Data></Cell>
         <Cell><Data ss:Type="String">Date</Data></Cell>
         <Cell><Data ss:Type="String">Size</Data></Cell>
         <Cell><Data ss:Type="String">Date modified</Data></Cell>
@@ -15,9 +16,12 @@
         <Cell><Data ss:Type="String">Is private</Data></Cell>
         <Cell><Data ss:Type="String">Latitude</Data></Cell>
         <Cell><Data ss:Type="String">Longitude</Data></Cell>
+        <Cell><Data ss:Type="String">Created at</Data></Cell>
+        <Cell><Data ss:Type="String">Collection id</Data></Cell>
       </Row>
     <% @images.each do |image| %>
       <Row>
+        <Cell><Data ss:Type="String"><%= image.id %></Data></Cell>
         <Cell><Data ss:Type="String"><%= image.date %></Data></Cell>
         <Cell><Data ss:Type="String"><%= image.size %></Data></Cell>
         <Cell><Data ss:Type="String"><%= image.date_modified %></Data></Cell>
@@ -26,6 +30,8 @@
         <Cell><Data ss:Type="String"><%= image.is_private %></Data></Cell>
         <Cell><Data ss:Type="String"><%= image.latitude %></Data></Cell>
         <Cell><Data ss:Type="String"><%= image.longitude %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.created_at %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= image.collection_id %></Data></Cell>
       </Row>
     <% end %>
     </Table>

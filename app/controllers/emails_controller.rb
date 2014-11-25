@@ -4,6 +4,7 @@ class EmailsController < ApplicationController
 
   def index
     @emails = Email.all
+    @email_count = Email.all.count
     respond_to do |format|
       format.html
       format.csv { send_data @emails.to_csv }

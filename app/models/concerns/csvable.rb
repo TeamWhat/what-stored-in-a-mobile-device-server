@@ -2,7 +2,7 @@ module Csvable
   extend ActiveSupport::Concern
 
   def to_csv(options = {})
-  	names = column_names - ['collection_id', 'id', 'created_at', 'updated_at', 'uid']
+  	names = column_names - ['updated_at', 'uid']
     CSV.generate(options) do |csv|
       csv << names
       all.each do |object|

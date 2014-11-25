@@ -4,4 +4,5 @@ class Collection < ActiveRecord::Base
   has_many :applications, dependent: :destroy
   has_many :texts, dependent: :destroy
   has_many :audios, dependent: :destroy
+  has_many :videos, dependent: :destroy
 end
