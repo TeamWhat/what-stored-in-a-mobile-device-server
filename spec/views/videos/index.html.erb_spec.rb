@@ -46,8 +46,7 @@ RSpec.describe "videos/index", :type => :view do
     assert_select "tr>td", :text => 1.to_s, :count => 2
     assert_select "tr>td", :text => "Description".to_s, :count => 2
     assert_select "tr>td", :text => "Is Private".to_s, :count => 2
-    assert_select "tr>td", :text => 1.5.to_s, :count => 2
-    assert_select "tr>td", :text => 1.5.to_s, :count => 2
+    assert_select "tr>td", :text => 1.5.to_s, :count => 4
     assert_select "tr>td", :text => "Artist".to_s, :count => 2
     assert_select "tr>td", :text => "Language".to_s, :count => 2
     assert_select "tr>td", :text => 2.to_s, :count => 2

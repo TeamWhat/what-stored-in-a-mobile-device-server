@@ -70,6 +70,26 @@ RSpec.describe ReceiveDataController, type: :controller do
             size: '56',
             album: 'test music'
           }
+        },
+        video_data: {
+          '0' => {
+            tags: 'music video',
+            album: 'test videos',
+            resolution: '800x600',
+            size: '2555',
+            category: 'test category',
+            duration: '55',
+            date_added: '1416491308',
+            date_modified: '1416491308',
+            date_taken: '1416491308',
+            description: 'test description',
+            is_private: 'false',
+            longitude: '60.2',
+            latitude: '55.8',
+            artist: 'tester',
+            language: 'english',
+            datetime: '1413189832'
+            }
         }
       }
     end
@@ -112,6 +132,13 @@ RSpec.describe ReceiveDataController, type: :controller do
         it 'have been saved' do
           audio = @subject.collections.last.audios.last
           expect(audio.size.to_s).to eq(data[:audio_data]['0'][:size])
+        end
+      end
+
+      describe 'video files' do
+        it 'have been saved' do
+          video = @subject.collections.last.videos.last
+          expect(video.size.to_s).to eq(data[:video_data]['0'][:size])
         end
       end
 
