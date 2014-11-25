@@ -16,6 +16,7 @@ class Image < ActiveRecord::Base
   end
 
   def self.minimum_image_file_age
+    return -1 if Image.all.empty?
     image_ages = Array.new
     Image.all.each do |image|
       image_ages.push(image.date.to_time.to_i - image.date_added.to_time.to_i)
@@ -24,6 +25,7 @@ class Image < ActiveRecord::Base
   end
 
   def self.maximum_image_file_age
+    return -1 if Image.all.empty?
     image_ages = Array.new
     Image.all.each do |image|
       image_ages.push(image.date.to_time.to_i - image.date_added.to_time.to_i)

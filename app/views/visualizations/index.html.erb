@@ -30,6 +30,7 @@
     <%= bar_chart ({"Image" => @visualization_data[:average_image_age],
                     "Text" => @visualization_data[:average_text_age],
                     "Audio" => @visualization_data[:average_audio_age],
+                    "Video" => @visualization_data[:average_video_age],
                     "Application" => @visualization_data[:average_app_install_age]}) %>
   </div>
   <div class="col-md-4">
@@ -37,6 +38,7 @@
     <%= bar_chart ({"Image" => @visualization_data[:minimum_image_age],
                     "Text" => @visualization_data[:minimum_text_age],
                     "Audio" => @visualization_data[:minimum_audio_age],
+                    "Video" => @visualization_data[:minimum_video_age],
                     "Application" => @visualization_data[:minimum_app_install_age]}) %>
   </div>
   <div class="col-md-4">
@@ -44,6 +46,7 @@
     <%= bar_chart ({"Image" => @visualization_data[:maximum_image_age],
                     "Text" => @visualization_data[:maximum_text_age],
                     "Audio" => @visualization_data[:maximum_audio_age],
+                    "Video" => @visualization_data[:maximum_video_age],
                     "Application" => @visualization_data[:maximum_app_install_age]}) %>
   </div>
 </div>
@@ -53,18 +56,21 @@
     <h3 class="h3">Average file size (kb)</h3>
     <%= bar_chart ({"Image" => @visualization_data[:average_image_size],
                     "Text" => @visualization_data[:average_text_size],
-                    "Audio" => @visualization_data[:average_audio_size]}) %>
+                    "Audio" => @visualization_data[:average_audio_size],
+                    "Video" => @visualization_data[:average_video_size]}) %>
   </div>
   <div class="col-md-4">
     <h3 class="h3">Minimum file size (kb)</h3>
     <%= bar_chart ({"Image" => @visualization_data[:minimum_image_size],
                     "Text" => @visualization_data[:minimum_text_size],
-                    "Audio" => @visualization_data[:minimum_audio_size]}) %>
+                    "Audio" => @visualization_data[:minimum_audio_size],
+                    "Video" => @visualization_data[:minimum_video_size]}) %>
   </div>
   <div class="col-md-4">
     <h3 class="h3">Maximum file size (kb)</h3>
     <%= bar_chart ({"Image" => @visualization_data[:maximum_image_size],
                     "Text" => @visualization_data[:maximum_text_size],
-                    "Audio" => @visualization_data[:maximum_audio_size]}) %>
+                    "Audio" => @visualization_data[:maximum_audio_size],
+                    "Video" => @visualization_data[:maximum_video_size]}) %>
   </div>
 </div>
