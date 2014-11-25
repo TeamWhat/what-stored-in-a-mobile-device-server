@@ -7,7 +7,7 @@ RSpec.describe "videos/index", :type => :view do
         :tags => "Tags",
         :album => "Album",
         :resolution => "Resolution",
-        :size => "Size",
+        :size => 5,
         :category => "Category",
         :duration => 1,
         :description => "Description",
@@ -22,7 +22,7 @@ RSpec.describe "videos/index", :type => :view do
         :tags => "Tags",
         :album => "Album",
         :resolution => "Resolution",
-        :size => "Size",
+        :size => 5,
         :category => "Category",
         :duration => 1,
         :description => "Description",
@@ -41,7 +41,7 @@ RSpec.describe "videos/index", :type => :view do
     assert_select "tr>td", :text => "Tags".to_s, :count => 2
     assert_select "tr>td", :text => "Album".to_s, :count => 2
     assert_select "tr>td", :text => "Resolution".to_s, :count => 2
-    assert_select "tr>td", :text => "Size".to_s, :count => 2
+    assert_select "tr>td", :text => 5.to_s, :count => 2
     assert_select "tr>td", :text => "Category".to_s, :count => 2
     assert_select "tr>td", :text => 1.to_s, :count => 2
     assert_select "tr>td", :text => "Description".to_s, :count => 2

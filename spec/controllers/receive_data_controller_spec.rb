@@ -3,8 +3,6 @@ require 'rails_helper'
 RSpec.describe ReceiveDataController, type: :controller do
 
   context 'with valid data' do
-    let(:email) { 'example@example.com' }
-    let(:version) { '2.0' }
     let(:data) do
       {
         uid: "�g�i._i��;�b\\a0005'p87k�k��KGP�HA���",
@@ -28,14 +26,14 @@ RSpec.describe ReceiveDataController, type: :controller do
             model: 'asd',
             serial: 'x6382f11c7ee04a',
             datetime: '1413189832',
-            version: version
+            version: '2.0'
           }
         },
         personal_info: {
           gender: 'male',
           age: 132,
           country: 'CCCP',
-          email: email
+          email: 'example@example.com'
         },
         application_data: {
           '0' => {
@@ -168,16 +166,25 @@ RSpec.describe ReceiveDataController, type: :controller do
         end
 
         describe 'with different email' do
-          let(:email) { 'you@you.fi' }
-
-          it "doesn't create a new email" do
+          before :each do
+            data[:personal_info][:email] = 'you@you.fi'
             post 'receive', data
-            expect(Email.count).to eq(1)
+          end
+
+          it "creates a new email" do
+            expect(Email.count).to eq(2)
           end
         end
 
+        it "increments email count" do
+          expect(Email.first.count).to eq(2)
+        end
+
         describe 'with different version' do
-          let(:version) { '4.2' }
+          before :each do
+            data[:device_info]['0'][:version] = '4.2'
+            post 'receive', data
+          end
 
           it 'updates the database' do
             expect(Subject.last.version).to eq('4.2')
