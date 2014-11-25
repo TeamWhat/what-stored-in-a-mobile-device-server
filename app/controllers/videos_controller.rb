@@ -41,11 +41,12 @@ class VideosController < ApplicationController
   end
 
   private
-    def set_video
-      @video = Video.find(params[:id])
-    end
 
-    def video_params
-      params.require(:video).permit(:tags, :album, :resolution, :size, :category, :duration, :date_added, :date_modified, :date_taken, :description, :is_private, :longitude, :latitude, :artist, :language, :date, :collection_id)
-    end
+  def set_video
+    @video = Video.find(params[:id])
+  end
+
+  def video_params
+    params.require(:video).permit(:tags, :album, :resolution, :size, :category, :duration, :date_added, :date_modified, :date_taken, :description, :is_private, :longitude, :latitude, :artist, :language, :date, :collection_id)
+  end
 end

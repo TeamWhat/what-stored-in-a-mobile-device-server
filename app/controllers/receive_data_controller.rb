@@ -25,7 +25,7 @@ class ReceiveDataController < ApplicationController
       datum.date_taken = DateTime.strptime(value[:date_taken], '%s') if datum.respond_to?(:date_taken) unless value[:date_taken].nil?
       datum.first_installed = DateTime.strptime(value[:first_installed], '%s') if datum.respond_to?(:first_installed) unless value[:first_installed].nil?
 
-      datum.save unless eval(datum.to_s + '.find_by(params_for_' + type + '(value).merge(date: datum.date).merge(eval(extra_columns(type))))' )
+      datum.save unless eval(datum.to_s + '.find_by(params_for_' + type + '(value).merge(date: datum.date).merge(eval(extra_columns(type))))')
     end
   end
 
