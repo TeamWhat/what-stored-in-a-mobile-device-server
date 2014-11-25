@@ -55,3 +55,9 @@
 <br>
 
 <%= link_to 'New Video', new_video_path %>
+
+<p>
+  Download:
+  <%= link_to "CSV", videos_path(format: "csv") %> |
+  <%= link_to "Excel", videos_path(format: "xls") %>
+</p>
