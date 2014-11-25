@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125134217) do
+ActiveRecord::Schema.define(version: 20141125141520) do
 
   create_table "applications", force: true do |t|
     t.string   "label"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20141125134217) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "count"
+    t.integer  "entries"
   end
 
   create_table "images", force: true do |t|

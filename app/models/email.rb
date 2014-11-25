@@ -6,9 +6,9 @@ class Email < ActiveRecord::Base
   def self.create_or_increment_count(address)
     email = Email.find_by email: address
     if email.nil?
-      email = Email.new(email: address, count: 0)
+      email = Email.new(email: address, entries: 0)
     end
-    email.count += 1
+    email.entries += 1
     email.save
   end
 end
