@@ -5,6 +5,7 @@ class VisualizationsController < ApplicationController
     gender_count: Subject.group(:gender).count,
     age_count: Subject.group(:age).count,
     country_count: Subject.group(:country).count,
+    os_version_count: Subject.group(:version).count,
 
     average_text_age: Text.average_text_file_age,
     average_image_age: Image.average_image_file_age,
