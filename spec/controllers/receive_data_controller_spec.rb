@@ -177,7 +177,7 @@ RSpec.describe ReceiveDataController, type: :controller do
         end
 
         it 'increments email count' do
-          expect(Email.first.count).to eq(2)
+          expect(Email.first.entries).to eq(2)
         end
 
         describe 'with different version' do
