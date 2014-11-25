@@ -4,15 +4,6 @@ class Audio < ActiveRecord::Base
   belongs_to :collection
   has_one :subject, through: :collection
 
-  def self.to_csv(options = {})
-    CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |audio|
-        csv << audio.attributes.values_at(*column_names)
-      end
-    end
-  end
-
   def self.average_audio_file_age
     number_of_audio = Audio.all.count
     average_age = 0
