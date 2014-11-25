@@ -87,7 +87,7 @@ RSpec.describe ReceiveDataController, type: :controller do
             artist: 'tester',
             language: 'english',
             datetime: '1413189832'
-            }
+          }
         }
       }
     end
@@ -171,12 +171,12 @@ RSpec.describe ReceiveDataController, type: :controller do
             post 'receive', data
           end
 
-          it "creates a new email" do
+          it 'creates a new email' do
             expect(Email.count).to eq(2)
           end
         end
 
-        it "increments email count" do
+        it 'increments email count' do
           expect(Email.first.count).to eq(2)
         end
 

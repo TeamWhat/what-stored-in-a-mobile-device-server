@@ -1,25 +1,25 @@
 require 'rails_helper'
 
-RSpec.describe "videos/show", :type => :view do
+RSpec.describe 'videos/show', type: :view do
   before(:each) do
     @video = assign(:video, Video.create!(
-      :tags => "Tags",
-      :album => "Album",
-      :resolution => "Resolution",
-      :size => "Size",
-      :category => "Category",
-      :duration => 1,
-      :description => "Description",
-      :is_private => "Is Private",
-      :longitude => 1.5,
-      :latitude => 1.5,
-      :artist => "Artist",
-      :language => "Language",
-      :collection_id => 2
+      tags: 'Tags',
+      album: 'Album',
+      resolution: 'Resolution',
+      size: 'Size',
+      category: 'Category',
+      duration: 1,
+      description: 'Description',
+      is_private: 'Is Private',
+      longitude: 1.5,
+      latitude: 1.5,
+      artist: 'Artist',
+      language: 'Language',
+      collection_id: 2
     ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Tags/)
     expect(rendered).to match(/Album/)

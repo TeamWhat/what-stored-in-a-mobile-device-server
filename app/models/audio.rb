@@ -10,27 +10,26 @@ class Audio < ActiveRecord::Base
     Audio.all.each do |audio|
       average_age = average_age + audio.date.to_time.to_i - audio.date_added.to_time.to_i
     end
-    average_age = average_age/number_of_audio unless number_of_audio == 0
+    average_age = average_age / number_of_audio unless number_of_audio == 0
     # Convert seconds into days
-    average_age/86400
+    average_age / 86_400
   end
 
   def self.maximum_audio_file_age
-    audio_ages = Array.new
+    audio_ages = []
     Audio.all.each do |audio|
       audio_ages.push(audio.date.to_time.to_i - audio.date_added.to_time.to_i)
     end
-    audio_ages.max/86400
+    audio_ages.max / 86_400
   end
 
   def self.minimum_audio_file_age
-    audio_ages = Array.new
+    audio_ages = []
     Audio.all.each do |audio|
       audio_ages.push(audio.date.to_time.to_i - audio.date_added.to_time.to_i)
     end
-    audio_ages.min/86400
+    audio_ages.min / 86_400
   end
-
 
   def self.average_audio_file_size
     number_of_audios = Audio.all.count
@@ -38,11 +37,11 @@ class Audio < ActiveRecord::Base
     Audio.all.each do |audio|
       average_size += audio.size
     end
-    average_size/number_of_audios unless number_of_audios == 0
+    average_size / number_of_audios unless number_of_audios == 0
   end
 
   def self.minimum_audio_file_size
-    audio_sizes = Array.new
+    audio_sizes = []
     Audio.all.each do |audio|
       audio_sizes.push(audio.size)
     end
@@ -50,7 +49,7 @@ class Audio < ActiveRecord::Base
   end
 
   def self.maximum_audio_file_size
-    audio_sizes = Array.new
+    audio_sizes = []
     Audio.all.each do |audio|
       audio_sizes.push(audio.size)
     end

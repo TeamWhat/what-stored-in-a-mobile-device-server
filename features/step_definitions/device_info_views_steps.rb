@@ -22,5 +22,5 @@ Then /^I should not see the device info$/ do
 end
 
 And /^There exists device info$/ do
-  FactoryGirl.create(:subject, uid: 'UID123', date: Date.current, brand:'abc', model:'def', product:'ghi', serial:'jkl', device:nil)
+  FactoryGirl.create(:subject, uid: 'UID123', date: Date.current, brand: 'abc', model: 'def', product: 'ghi', serial: 'jkl', device: nil)
 end
