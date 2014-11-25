@@ -4,6 +4,7 @@ class VideosController < ApplicationController
 
   def index
     @videos = Video.all
+    @video_count = Video.all.count
     respond_to do |format|
       format.html
       format.csv { send_data @videos.to_csv }

@@ -13,6 +13,7 @@ class CollectionsController < ApplicationController
     @audio_count = @collection.audios.count
     @image_count = @collection.images.count
     @text_count = @collection.texts.count
+    @video_count = @collection.videos.count
     @application_count = @collection.applications.count
   end
 
