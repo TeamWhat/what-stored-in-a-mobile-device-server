@@ -1,8 +1,10 @@
 <h1>Listing applications</h1>
+<h4 class="h4">Total number of applications: <%= @application_count %></h4>
 
 <table class="table table-condensed table-hover">
   <thead>
     <tr>
+      <th>Date</th>
       <th>Label</th>
       <th>Package name</th>
       <th>First installed</th>
@@ -15,6 +17,7 @@
   <tbody>
     <% @applications.each do |application| %>
       <tr>
+        <td><%= application.date %></td>
         <td><%= application.label %></td>
         <td><%= application.package_name %></td>
         <td><%= application.first_installed %></td>

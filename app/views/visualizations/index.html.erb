@@ -1,22 +1,70 @@
 <div class="row">
-    <div class="col-md-6">
-      <h2 class="h2">Subject phone brands</h2>
-      <%= pie_chart Subject.group(:brand).count %>
-    </div>
-    <div class="col-md-6">
-      <h2 class="h2">Average image size in a collection</h2>
-      <%= column_chart Image.group(:collection).average(:size) %>
-    </div>
+
+  <div class="col-md-4">
+    <h3 class="h3">Gender</h3>
+    <%= pie_chart @visualization_data[:gender_count] %>
+  </div>
+  <div class="col-md-4">
+    <h3 class="h3">Age</h3>
+    <%= pie_chart @visualization_data[:age_count] %>
+  </div>
+  <div class="col-md-4">
+    <h3 class="h3">Country</h3>
+    <%= pie_chart @visualization_data[:country_count] %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <h3 class="h3">Phone brand</h3>
+    <%= pie_chart @visualization_data[:brand_count] %>
+  </div>
+  <div class="col-md-6">
+    <h3 class="h3">OS version</h3>
+    <%= pie_chart @visualization_data[:os_version_count] %>
+  </div>
 </div>
 
+<div class="row">
+  <div class="col-md-4">
+    <h3 class="h3">Average file age in days</h3>
+    <%= bar_chart ({"Image" => @visualization_data[:average_image_age],
+                    "Text" => @visualization_data[:average_text_age],
+                    "Audio" => @visualization_data[:average_audio_age],
+                    "Application" => @visualization_data[:average_app_install_age]}) %>
+  </div>
+  <div class="col-md-4">
+    <h3 class="h3">Minimum file age in days</h3>
+    <%= bar_chart ({"Image" => @visualization_data[:minimum_image_age],
+                    "Text" => @visualization_data[:minimum_text_age],
+                    "Audio" => @visualization_data[:minimum_audio_age],
+                    "Application" => @visualization_data[:minimum_app_install_age]}) %>
+  </div>
+  <div class="col-md-4">
+    <h3 class="h3">Maximum file age in days</h3>
+    <%= bar_chart ({"Image" => @visualization_data[:maximum_image_age],
+                    "Text" => @visualization_data[:maximum_text_age],
+                    "Audio" => @visualization_data[:maximum_audio_age],
+                    "Application" => @visualization_data[:maximum_app_install_age]}) %>
+  </div>
+</div>
 
 <div class="row">
-    <div class="col-md-6">
-      <h2 class="h2">Images taken on a date</h2>
-      <%= line_chart Image.group(:date_taken).count %>
-    </div>
-    <div class="col-md-6">
-      <h2 class="h2">Collections per subject</h2>
-      <%= bar_chart Collection.group(:subject).count %>
-    </div>
+  <div class="col-md-4">
+    <h3 class="h3">Average file size (kb)</h3>
+    <%= bar_chart ({"Image" => @visualization_data[:average_image_size],
+                    "Text" => @visualization_data[:average_text_size],
+                    "Audio" => @visualization_data[:average_audio_size]}) %>
+  </div>
+  <div class="col-md-4">
+    <h3 class="h3">Minimum file size (kb)</h3>
+    <%= bar_chart ({"Image" => @visualization_data[:minimum_image_size],
+                    "Text" => @visualization_data[:minimum_text_size],
+                    "Audio" => @visualization_data[:minimum_audio_size]}) %>
+  </div>
+  <div class="col-md-4">
+    <h3 class="h3">Maximum file size (kb)</h3>
+    <%= bar_chart ({"Image" => @visualization_data[:maximum_image_size],
+                    "Text" => @visualization_data[:maximum_text_size],
+                    "Audio" => @visualization_data[:maximum_audio_size]}) %>
+  </div>
 </div>

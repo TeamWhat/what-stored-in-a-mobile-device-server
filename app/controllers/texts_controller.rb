@@ -4,6 +4,7 @@ class TextsController < ApplicationController
 
   def index
     @texts = Text.all
+    @text_count = Text.all.count
     respond_to do |format|
       format.html
       format.csv { send_data @texts.to_csv }

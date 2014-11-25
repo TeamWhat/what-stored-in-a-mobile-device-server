@@ -3,6 +3,7 @@
 <p> <%= link_to "Subject #{@collection.subject_id}", @collection.subject %></p>
 
 <h3> Images </h3>
+<h5>Total number of images: <%= @image_count %></h5>
 <table class="table table-condensed table-hover">
   <thead>
     <tr>
@@ -35,6 +36,7 @@
 </table>
 
 <h3> Applications </h3>
+<h5>Total number of applications: <%= @application_count %></h5>
 <table class="table table-condensed table-hover">
   <thead>
   <tr>
@@ -63,6 +65,7 @@
 </table>
 
 <h3>Text files</h3>
+<h5>Total number of text files: <%= @text_count %></h5>
 <table class="table table-condensed table-hover">
   <thead>
     <tr>
@@ -90,6 +93,7 @@
 </table>
 
 <h3>Audio files</h3>
+<h5>Total number of audio files: <%= @audio_count %></h5>
 <table class="table table-condensed table-hover">
   <thead>
     <tr>

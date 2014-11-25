@@ -10,6 +10,10 @@ class CollectionsController < ApplicationController
   # GET /collections/1
   # GET /collections/1.json
   def show
+    @audio_count = @collection.audios.count
+    @image_count = @collection.images.count
+    @text_count = @collection.texts.count
+    @application_count = @collection.applications.count
   end
 
   # GET /collections/new
