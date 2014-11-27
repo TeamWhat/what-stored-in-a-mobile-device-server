@@ -9,7 +9,9 @@ class ReceiveDataController < ApplicationController
     add_data(params, subject, 'text')
     add_data(params, subject, 'audio')
     add_data(params, subject, 'video')
-    head :ok, content_type: 'text/html'
+
+    responseJson = { status: 'success' }
+    render json: responseJson, status: :created
   end
 
   private
