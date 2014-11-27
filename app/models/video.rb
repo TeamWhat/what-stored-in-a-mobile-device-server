@@ -12,25 +12,23 @@ class Video < ActiveRecord::Base
     end
     average_age = average_age / number_of_videos unless number_of_videos == 0
     # Convert seconds into days
-    average_age / 86_400
+    average_age / 86_400 unless average_age.zero?
   end
 
   def self.minimum_video_file_age
-    return -1 if Video.all.empty?
     video_ages = []
     Video.all.each do |video|
       video_ages.push(video.date.to_time.to_i - video.date_added.to_time.to_i)
     end
-    video_ages.min / 86_400
+    video_ages.min / 86_400 unless video_ages.empty?
   end
 
   def self.maximum_video_file_age
-    return -1 if Video.all.empty?
     video_ages = []
     Video.all.each do |video|
       video_ages.push(video.date.to_time.to_i - video.date_added.to_time.to_i)
     end
-    video_ages.max / 86_400
+    video_ages.max / 86_400 unless video_ages.empty?
   end
 
   def self.average_video_file_size
@@ -39,7 +37,7 @@ class Video < ActiveRecord::Base
     Video.all.each do |video|
       average_size += video.size
     end
-    average_size / number_of_videos unless number_of_videos == 0
+    average_size / number_of_videos / 1000 unless number_of_videos == 0
   end
 
   def self.minimum_video_file_size
@@ -47,7 +45,7 @@ class Video < ActiveRecord::Base
     Video.all.each do |video|
       video_sizes.push(video.size)
     end
-    video_sizes.min
+    video_sizes.min / 1000 unless video_sizes.empty?
   end
 
   def self.maximum_video_file_size
@@ -55,6 +53,6 @@ class Video < ActiveRecord::Base
     Video.all.each do |video|
       video_sizes.push(video.size)
     end
-    video_sizes.max
+    video_sizes.max / 1000 unless video_sizes.empty?
   end
 end

@@ -12,25 +12,23 @@ class Image < ActiveRecord::Base
     end
     average_age = average_age / number_of_images unless number_of_images == 0
     # Convert seconds into days
-    average_age / 86_400
+    average_age / 86_400 unless average_age.zero?
   end
 
   def self.minimum_image_file_age
-    return -1 if Image.all.empty?
     image_ages = []
     Image.all.each do |image|
       image_ages.push(image.date.to_time.to_i - image.date_added.to_time.to_i)
     end
-    image_ages.min / 86_400
+    image_ages.min / 86_400 unless image_ages.empty?
   end
 
   def self.maximum_image_file_age
-    return -1 if Image.all.empty?
     image_ages = []
     Image.all.each do |image|
       image_ages.push(image.date.to_time.to_i - image.date_added.to_time.to_i)
     end
-    image_ages.max / 86_400
+    image_ages.max / 86_400 unless image_ages.empty?
   end
 
   def self.average_image_file_size
@@ -39,7 +37,7 @@ class Image < ActiveRecord::Base
     Image.all.each do |image|
       average_size += image.size
     end
-    average_size / number_of_images unless number_of_images == 0
+    average_size / number_of_images / 1000 unless number_of_images == 0
   end
 
   def self.minimum_image_file_size
@@ -47,7 +45,7 @@ class Image < ActiveRecord::Base
     Image.all.each do |image|
       image_sizes.push(image.size)
     end
-    image_sizes.min
+    image_sizes.min / 1000 unless image_sizes.empty?
   end
 
   def self.maximum_image_file_size
@@ -55,6 +53,6 @@ class Image < ActiveRecord::Base
     Image.all.each do |image|
       image_sizes.push(image.size)
     end
-    image_sizes.max
+    image_sizes.max / 1000 unless image_sizes.empty?
   end
 end

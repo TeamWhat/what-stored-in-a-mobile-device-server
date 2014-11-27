@@ -20,7 +20,7 @@ class Application < ActiveRecord::Base
     Application.all.each do |application|
       application_ages.push(application.date.to_time.to_i - application.first_installed.to_time.to_i)
     end
-    application_ages.max / 86_400
+    application_ages.max / 86_400 unless application_ages.empty?
   end
 
   def self.minimum_application_file_age
@@ -28,6 +28,6 @@ class Application < ActiveRecord::Base
     Application.all.each do |application|
       application_ages.push(application.date.to_time.to_i - application.first_installed.to_time.to_i)
     end
-    application_ages.min / 86_400
+    application_ages.min / 86_400 unless application_ages.empty?
   end
 end
