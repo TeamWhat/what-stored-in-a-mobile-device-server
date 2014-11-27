@@ -12,7 +12,7 @@ class Text < ActiveRecord::Base
     end
     average_age = average_age / number_of_texts unless number_of_texts == 0
     # Convert seconds into days
-    average_age / 86_400
+    average_age / 86_400 unless average_age.zero?
   end
 
   def self.maximum_text_file_age
@@ -20,7 +20,7 @@ class Text < ActiveRecord::Base
     Text.all.each do |text|
       text_ages.push(text.date.to_time.to_i - text.date_added.to_time.to_i)
     end
-    text_ages.max / 86_400
+    text_ages.max / 86_400 unless text_ages.empty?
   end
 
   def self.minimum_text_file_age
@@ -28,7 +28,7 @@ class Text < ActiveRecord::Base
     Text.all.each do |text|
       text_ages.push(text.date.to_time.to_i - text.date_added.to_time.to_i)
     end
-    text_ages.min / 86_400
+    text_ages.min / 86_400 unless text_ages.empty?
   end
 
   def self.average_text_file_size
@@ -36,8 +36,9 @@ class Text < ActiveRecord::Base
     average_size = 0
     Text.all.each do |text|
       average_size += text.size
+
     end
-    average_size / number_of_texts unless number_of_texts == 0
+    average_size / number_of_texts / 1000 unless number_of_texts == 0
   end
 
   def self.minimum_text_file_size
@@ -45,7 +46,7 @@ class Text < ActiveRecord::Base
     Text.all.each do |text|
       text_sizes.push(text.size)
     end
-    text_sizes.min
+    text_sizes.min / 1000 unless text_sizes.empty?
   end
 
   def self.maximum_text_file_size
@@ -53,6 +54,6 @@ class Text < ActiveRecord::Base
     Text.all.each do |text|
       text_sizes.push(text.size)
     end
-    text_sizes.max
+    text_sizes.max / 1000 unless text_sizes.empty?
   end
 end
