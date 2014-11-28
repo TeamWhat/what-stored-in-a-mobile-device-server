@@ -53,21 +53,21 @@
 
 <div class="row">
   <div class="col-md-4">
-    <h3 class="h3">Average file size (kb)</h3>
+    <h3 class="h3">Average file size (kB)</h3>
     <%= bar_chart ({"Image" => @visualization_data[:average_image_size],
                     "Text" => @visualization_data[:average_text_size],
                     "Audio" => @visualization_data[:average_audio_size],
                     "Video" => @visualization_data[:average_video_size]}) %>
   </div>
   <div class="col-md-4">
-    <h3 class="h3">Minimum file size (kb)</h3>
+    <h3 class="h3">Minimum file size (kB)</h3>
     <%= bar_chart ({"Image" => @visualization_data[:minimum_image_size],
                     "Text" => @visualization_data[:minimum_text_size],
                     "Audio" => @visualization_data[:minimum_audio_size],
                     "Video" => @visualization_data[:minimum_video_size]}) %>
   </div>
   <div class="col-md-4">
-    <h3 class="h3">Maximum file size (kb)</h3>
+    <h3 class="h3">Maximum file size (kB)</h3>
     <%= bar_chart ({"Image" => @visualization_data[:maximum_image_size],
                     "Text" => @visualization_data[:maximum_text_size],
                     "Audio" => @visualization_data[:maximum_audio_size],
