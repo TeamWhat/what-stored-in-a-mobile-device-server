@@ -5,6 +5,8 @@ class Subject < ActiveRecord::Base
   has_many :images, through: :collections
   has_many :applications, through: :collections
   has_many :texts, through: :collections
+  has_many :audios, through: :collections
+  has_many :videos, through: :collections
 
   validates_uniqueness_of :uid
   validates_presence_of :uid

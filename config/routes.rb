@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :images
   resources :collections
   resources :subjects
+  get 'shared/:token', to: 'subjects#shared'
   resources :visualizations, only: [:index]
   devise_for :users
   post 'submit', to: 'receive_data#receive'

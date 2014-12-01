@@ -1,0 +1,8 @@
+<h1>Shared</h1>
+
+<h3 class="h3">Total file size</h3>
+<%= pie_chart ({"Image" => @subject.images.total_size,
+                "Text" => @subject.texts.total_size,
+                "Audio" => @subject.audios.total_size,
+                "Video" => @subject.videos.total_size,
+                }) %>
