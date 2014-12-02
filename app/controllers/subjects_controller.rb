@@ -67,7 +67,7 @@ class SubjectsController < ApplicationController
   end
 
   def shared
-    @subject = Subject.last
+    @subject = Subject.find_by uid: params[:token]
   end
 
   private

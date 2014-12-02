@@ -3,9 +3,17 @@ module Statable
 
   def total_size
     size_count = 0
-    self.class.const_get(name).all.each do |o|
+    table.all.each do |o|
       size_count += o.size
     end
     size_count
+  end
+
+  def total_count
+    table.all.count
+  end
+
+  def table
+    self.class.const_get(name)
   end
 end
