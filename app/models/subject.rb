@@ -21,6 +21,10 @@ class Subject < ActiveRecord::Base
     subject.gender = params_for_subject[:gender]
     subject.age = params_for_subject[:age]
     subject.country = params_for_subject[:country]
+    subject.total_external_space = params_for_subject[:total_external_space]
+    subject.free_external_space = params_for_subject[:free_external_space]
+    subject.total_internal_space = params_for_subject[:total_internal_space]
+    subject.free_internal_space = params_for_subject[:free_internal_space]
     subject.save
     subject
   end

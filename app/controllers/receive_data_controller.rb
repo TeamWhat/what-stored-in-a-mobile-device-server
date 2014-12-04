@@ -42,7 +42,7 @@ class ReceiveDataController < ApplicationController
   end
 
   def params_for_subject
-    params.require(:device_info).require('0').permit(:device, :product, :brand, :model, :serial, :version)
+    params.require(:device_info).require('0').permit(:device, :product, :brand, :model, :serial, :version, :screen_size, :free_internal_space, :total_internal_space, :free_external_space, :total_external_space)
       .merge(params.permit(:uid))
       .merge(params.require(:personal_info).permit(:gender, :age, :country))
   end
