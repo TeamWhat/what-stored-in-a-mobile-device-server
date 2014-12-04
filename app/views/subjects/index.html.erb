@@ -13,6 +13,11 @@
       <th>Product</th>
       <th>Serial</th>
       <th>Version</th>
+      <th>Screen size (inches)</th>
+      <th>Free internal storage space (bytes)</th>
+      <th>Total internal storage space (bytes)</th>
+      <th>Free external storage space (bytes)</th>
+      <th>Total external storage space (bytes)</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -30,6 +35,11 @@
         <td><%= subject.product %></td>
         <td><%= subject.serial %></td>
         <td><%= subject.version %></td>
+        <td><%= subject.screen_size %></td>
+        <td><%= subject.free_internal_space %></td>
+        <td><%= subject.total_internal_space %></td>
+        <td><%= subject.free_external_space %></td>
+        <td><%= subject.total_external_space %></td>
         <td><%= link_to 'Show', subject %></td>
         <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
         <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>

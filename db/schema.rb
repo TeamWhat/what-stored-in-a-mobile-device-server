@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125141520) do
+ActiveRecord::Schema.define(version: 20141204141603) do
 
   create_table "applications", force: true do |t|
     t.string   "label"
@@ -87,6 +87,11 @@ ActiveRecord::Schema.define(version: 20141125141520) do
     t.string   "country"
     t.integer  "age"
     t.string   "version"
+    t.string   "screen_size"
+    t.string   "free_internal_space"
+    t.string   "total_internal_space"
+    t.string   "free_external_space"
+    t.string   "total_external_space"
   end
 
   create_table "texts", force: true do |t|
