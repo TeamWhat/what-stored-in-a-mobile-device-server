@@ -66,6 +66,10 @@ class SubjectsController < ApplicationController
     end
   end
 
+  def shared
+    @subject = Subject.find_by uid: params[:token]
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

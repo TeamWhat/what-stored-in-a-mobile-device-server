@@ -1,0 +1,14 @@
+<h1>Shared</h1>
+
+<h3>Total file size</h3>
+<%= pie_chart ({"Image" => @subject.images.total_size,
+                "Text" => @subject.texts.total_size,
+                "Audio" => @subject.audios.total_size,
+                "Video" => @subject.videos.total_size,
+                }) %>
+<h3>Total file count</h3>
+<%= pie_chart ({"Image" => @subject.images.total_count,
+                "Text" => @subject.texts.total_count,
+                "Audio" => @subject.audios.total_count,
+                "Video" => @subject.videos.total_count,
+                }) %>
