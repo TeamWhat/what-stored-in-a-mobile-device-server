@@ -33,6 +33,10 @@ module Statable
     extreme_value(:size, :max_by, 1000)
   end
 
+  def total_count
+    table.all.count
+  end
+
   private
 
   def table
@@ -62,9 +66,5 @@ module Statable
 
   def size(o)
     o.size
-  end
-
-  def total_count
-    table.all.count
   end
 end
