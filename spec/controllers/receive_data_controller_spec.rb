@@ -5,7 +5,7 @@ RSpec.describe ReceiveDataController, type: :controller do
   context 'with valid data' do
     let(:data) do
       {
-        uid: "�g�i._i��;�b\\a0005'p87k�k��KGP�HA���",
+        uid: '4',
         image_data: {
           '0' => {
             is_private: 'null',
