@@ -33,21 +33,6 @@ RSpec.describe VideosController, type: :controller do
     end
   end
 
-  describe 'GET new' do
-    it 'assigns a new video as @video' do
-      get :new, {}, valid_session
-      expect(assigns(:video)).to be_a_new(Video)
-    end
-  end
-
-  describe 'GET edit' do
-    it 'assigns the requested video as @video' do
-      video = Video.create! valid_attributes
-      get :edit, { id: video.to_param }, valid_session
-      expect(assigns(:video)).to eq(video)
-    end
-  end
-
   describe 'DELETE destroy' do
     it 'destroys the requested video' do
       video = Video.create! valid_attributes

@@ -9,7 +9,7 @@
       <th>Date modified</th>
       <th>Date added</th>
       <th>Mime type</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -22,15 +22,11 @@
         <td><%= text.date_added %></td>
         <td><%= text.mime_type %></td>
         <td><%= link_to 'Show', text %></td>
-        <td><%= link_to 'Edit', edit_text_path(text) %></td>
         <td><%= link_to 'Destroy', text, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-<%= link_to 'New Text', new_text_path %>
 
 <p>
   Download:

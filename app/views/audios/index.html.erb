@@ -19,7 +19,7 @@
       <th>Is podcast</th>
       <th>Is ringtone</th>
       <th>Duration</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -42,16 +42,11 @@
         <td><%= audio.is_ringtone %></td>
         <td><%= audio.duration %></td>
         <td><%= link_to 'Show', audio %></td>
-        <td><%= link_to 'Edit', edit_audio_path(audio) %></td>
         <td><%= link_to 'Destroy', audio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Audio', new_audio_path %>
 
 <p>
   Download:

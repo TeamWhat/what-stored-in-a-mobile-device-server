@@ -33,21 +33,6 @@ RSpec.describe AudiosController, type: :controller do
     end
   end
 
-  describe 'GET new' do
-    it 'assigns a new audio as @audio' do
-      get :new, {}, valid_session
-      expect(assigns(:audio)).to be_a_new(Audio)
-    end
-  end
-
-  describe 'GET edit' do
-    it 'assigns the requested audio as @audio' do
-      audio = Audio.create! valid_attributes
-      get :edit, { id: audio.to_param }, valid_session
-      expect(assigns(:audio)).to eq(audio)
-    end
-  end
-
   describe 'DELETE destroy' do
     it 'destroys the requested audio' do
       audio = Audio.create! valid_attributes
