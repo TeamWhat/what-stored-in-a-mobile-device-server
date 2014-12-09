@@ -5,7 +5,7 @@ class ReceiveDataController < ApplicationController
   def receive
     # Use transaction to prevent n + 1 problems
     ActiveRecord::Base.transaction do
-      subject = Subject.find_or_create(params_for_subject, params[:device_info]['0'][:datetime])
+      subject = Subject.find_or_create(params_for_subject, params[:device_info][latest_device_info_index][:datetime])
       Email.create_or_increment_count(params[:personal_info][:email])
       add_data(subject, 'image')
       add_data(subject, 'application')
@@ -44,6 +44,10 @@ class ReceiveDataController < ApplicationController
     DateTime.strptime(value[date_field], '%s')
   end
 
+  def latest_device_info_index
+    params[:device_info].keys.max_by { |o| o.to_i }
+  end
+
   # Creates a piece of data into a collection
   # e.g. collection.images.new(params_for_image(value))
   def create_piece_of_data(collection, type, value)
@@ -57,7 +61,7 @@ class ReceiveDataController < ApplicationController
   end
 
   def params_for_subject
-    params.require(:device_info).require('0').permit(:device, :product, :brand, :model, :serial, :version, :screen_size, :free_internal_space, :total_internal_space, :free_external_space, :total_external_space)
+    params.require(:device_info).require(latest_device_info_index).permit(:device, :product, :brand, :model, :serial, :version, :screen_size, :free_internal_space, :total_internal_space, :free_external_space, :total_external_space)
       .merge(params.permit(:uid))
       .merge(params.require(:personal_info).permit(:gender, :age, :country))
   end
