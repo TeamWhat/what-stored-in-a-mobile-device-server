@@ -26,7 +26,7 @@ class ReceiveDataController < ApplicationController
       next if value[:datetime].nil?
       collection = subject.collections.find_or_create_by(date: DateTime.strptime(value[:datetime], '%s'))
       datum = create_piece_of_data(collection, type, value)
-      datum.date = date_to_string(value, :datetime) if can_be_added(value, :datetime, datum)
+      datum.date = date_to_string(value, :datetime)
       datum.date_added = date_to_string(value, :date_added) if can_be_added(value, :date_added, datum)
       datum.date_modified = date_to_string(value, :date_modified) if can_be_added(value, :date_modified, datum)
       datum.date_taken = date_to_string(value, :date_taken) if can_be_added(value, :date_taken, datum)
