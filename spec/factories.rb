@@ -1,3 +1,4 @@
+# Factories define minimum valid objects
 FactoryGirl.define do
   factory :user do
     username 'admin'
@@ -6,6 +7,7 @@ FactoryGirl.define do
   end
 
   factory :subject do
+    # Calculate random UID
     uid { "#{rand(36**32).to_s(36)}" }
   end
 
