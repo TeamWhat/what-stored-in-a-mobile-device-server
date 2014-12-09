@@ -11,12 +11,15 @@ class Subject < ActiveRecord::Base
   validates_uniqueness_of :uid
   validates_presence_of :uid
 
+  # Finds or creates the subject
   def self.find_or_create(params_for_subject, datetime)
+    # Find subject by uid
     subject = Subject.find_by uid: params_for_subject[:uid]
     if subject.nil?
       subject = Subject.new(params_for_subject)
       subject.date = DateTime.strptime(datetime, '%s') unless datetime.nil?
     end
+    # Update the fields that can change
     subject.version = params_for_subject[:version]
     subject.gender = params_for_subject[:gender]
     subject.age = params_for_subject[:age]
