@@ -33,21 +33,6 @@ RSpec.describe TextsController, type: :controller do
     end
   end
 
-  describe 'GET new' do
-    it 'assigns a new text as @text' do
-      get :new, {}, valid_session
-      expect(assigns(:text)).to be_a_new(Text)
-    end
-  end
-
-  describe 'GET edit' do
-    it 'assigns the requested text as @text' do
-      text = Text.create! valid_attributes
-      get :edit, { id: text.to_param }, valid_session
-      expect(assigns(:text)).to eq(text)
-    end
-  end
-
   describe 'DELETE destroy' do
     it 'destroys the requested text' do
       text = Text.create! valid_attributes

@@ -1,6 +1,6 @@
 class TextsController < ApplicationController
-  respond_to :html, :json, except: :index
-  before_action :set_text, only: [:show, :edit, :update, :destroy]
+  respond_to :html, except: :index
+  before_action :set_text, only: [:show, :destroy]
 
   def index
     @texts = Text.all
@@ -16,25 +16,6 @@ class TextsController < ApplicationController
     respond_with(@text)
   end
 
-  def new
-    @text = Text.new
-    respond_with(@text)
-  end
-
-  def edit
-  end
-
-  def create
-    @text = Text.new(text_params)
-    @text.save
-    respond_with(@text)
-  end
-
-  def update
-    @text.update(text_params)
-    respond_with(@text)
-  end
-
   def destroy
     @text.destroy
     respond_with(@text)
@@ -44,9 +25,5 @@ class TextsController < ApplicationController
 
   def set_text
     @text = Text.find(params[:id])
-  end
-
-  def text_params
-    params.require(:text).permit(:date, :size, :date_modified, :date_added, :mime_type)
   end
 end

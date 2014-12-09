@@ -32,7 +32,7 @@ class ReceiveDataController < ApplicationController
       datum.date_taken = date_to_string(value, :date_taken) if can_be_added(value, :date_taken, datum)
       datum.first_installed = date_to_string(value, :first_installed) if can_be_added(value, :first_installed, datum)
 
-      datum.save
+      datum.save unless eval(datum.to_s + '.find_by(params_for_' + type + '(value).merge(date: datum.date).merge(eval(extra_columns(type))))')
     end
   end
 
@@ -54,6 +54,15 @@ class ReceiveDataController < ApplicationController
 
   def params_field(type)
     params[eval(':' + type + '_data')]
+  end
+
+  # comment
+  def extra_columns(type)
+    case type
+      when 'image' then 'date_added: datum.date_added, date_modified: datum.date_modified, date_taken: datum.date_taken'
+      when 'application' then 'first_installed: application.first_installed'
+      else 'date_added: datum.date_added, date_modified: datum.date_modified'
+    end
   end
 
   def params_for_subject

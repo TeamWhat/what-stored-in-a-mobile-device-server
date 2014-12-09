@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Subject</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -13,13 +13,8 @@
       <tr>
         <td><%= collection.subject_id %></td>
         <td><%= link_to 'Show', collection %></td>
-        <td><%= link_to 'Edit', edit_collection_path(collection) %></td>
         <td><%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New collection', new_collection_path %>

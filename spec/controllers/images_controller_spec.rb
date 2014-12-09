@@ -36,60 +36,6 @@ RSpec.describe ImagesController, type: :controller do
     end
   end
 
-  describe 'GET new' do
-    it 'assigns a new image as @image' do
-      get :new, {}, valid_session
-      expect(assigns(:image)).to be_a_new(Image)
-    end
-  end
-
-  describe 'GET edit' do
-    it 'assigns the requested image as @image' do
-      image = Image.create! valid_attributes
-      get :edit, { id: image.to_param }, valid_session
-      expect(assigns(:image)).to eq(image)
-    end
-  end
-
-  describe 'POST create' do
-    describe 'with valid params' do
-      let(:valid_attributes) { { collection_id: 3 } }
-
-      it 'creates a new Image' do
-        expect do
-          post :create, { image: valid_attributes }, valid_session
-        end.to change(Image, :count).by(1)
-      end
-
-      it 'assigns a newly created image as @image' do
-        post :create, { image: valid_attributes }, valid_session
-        expect(assigns(:image)).to be_a(Image)
-        expect(assigns(:image)).to be_persisted
-      end
-
-      it 'redirects to the created image' do
-        post :create, { image: valid_attributes }, valid_session
-        expect(response).to redirect_to(Image.last)
-      end
-    end
-
-    describe 'with invalid params' do
-      before :each do
-        allow_any_instance_of(Image).to receive(:save).and_return(false)
-      end
-
-      it 'assigns a newly created but unsaved image as @image' do
-        post :create, { image: invalid_attributes }, valid_session
-        expect(assigns(:image)).to be_a_new(Image)
-      end
-
-      it "re-renders the 'new' template" do
-        post :create, { image: invalid_attributes }, valid_session
-        expect(response).to render_template('new')
-      end
-    end
-  end
-
   describe 'DELETE destroy' do
     it 'destroys the requested image' do
       image = Image.create! valid_attributes

@@ -7,24 +7,8 @@ RSpec.describe ApplicationsController, type: :routing do
       expect(get: '/applications').to route_to('applications#index')
     end
 
-    it 'routes to #new' do
-      expect(get: '/applications/new').to route_to('applications#new')
-    end
-
     it 'routes to #show' do
       expect(get: '/applications/1').to route_to('applications#show', id: '1')
-    end
-
-    it 'routes to #edit' do
-      expect(get: '/applications/1/edit').to route_to('applications#edit', id: '1')
-    end
-
-    it 'routes to #create' do
-      expect(post: '/applications').to route_to('applications#create')
-    end
-
-    it 'routes to #update' do
-      expect(put: '/applications/1').to route_to('applications#update', id: '1')
     end
 
     it 'routes to #destroy' do
