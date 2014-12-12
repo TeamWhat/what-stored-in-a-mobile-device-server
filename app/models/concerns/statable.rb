@@ -5,7 +5,7 @@ module Statable
   # Calculates total size
   def total_size
     size_count = 0
-    table.all.each do |o|
+    suitable_objects(:size).each do |o|
       size_count += o.size
     end
     size_count
@@ -54,7 +54,7 @@ module Statable
   # divider defines what units the result will be in, e.g. converts seconds to days
   def extreme_value(calculation, sort, divider)
     return if table.all.empty?
-    extreme = valid_objects(calculation).send sort do |o|
+    extreme = suitable_objects(calculation).send sort do |o|
       send(calculation, o)
     end
     return nil if total_count(calculation).zero?
@@ -67,7 +67,7 @@ module Statable
   def average(calculation, divider)
     average = 0
     count = total_count(calculation)
-    valid_objects(calculation).each do |o|
+    suitable_objects(calculation).each do |o|
       average += send(calculation, o)
     end
     average /= count unless count == 0
@@ -84,14 +84,14 @@ module Statable
     o.size
   end
 
-  # All
-  def valid_objects(calculation)
+  # Returns all the objects in the table that are suitable for the given calculation
+  def suitable_objects(calculation)
     return table.all.reject { |o| o.size.nil? } if calculation == :size
     table.all.reject { |o| o.date.nil? || o.date_added.nil? }
   end
 
   # Calculates total number of objects in the table
   def total_count(calculation)
-    valid_objects(calculation).count
+    suitable_objects(calculation).count
   end
 end

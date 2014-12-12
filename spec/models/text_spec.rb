@@ -3,4 +3,5 @@ require 'rails_helper'
 RSpec.describe Text, type: :model do
   subject(:text) { FactoryGirl.create(:text) }
   it { is_expected.to be_valid }
+  it_behaves_like 'statable'
 end
