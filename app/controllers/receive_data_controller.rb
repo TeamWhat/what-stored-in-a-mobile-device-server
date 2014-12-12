@@ -37,7 +37,7 @@ class ReceiveDataController < ApplicationController
   end
 
   def can_be_added(value, date_field, datum)
-    not value[date_field].nil? and datum.respond_to?(date_field)
+    !value[date_field].nil? && datum.respond_to?(date_field)
   end
 
   def date_to_string(value, date_field)
@@ -45,7 +45,7 @@ class ReceiveDataController < ApplicationController
   end
 
   def latest_device_info_index
-    params[:device_info].keys.max_by { |o| o.to_i }
+    params[:device_info].keys.max_by(&:to_i)
   end
 
   # Creates a piece of data into a collection
