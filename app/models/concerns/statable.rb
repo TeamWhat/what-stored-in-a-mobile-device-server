@@ -41,11 +41,6 @@ module Statable
     extreme_value(:size, :max_by, 1000)
   end
 
-  # Calculates total number of objects in the table
-  def total_count
-    table.all.count
-  end
-
   private
 
   # Returns the name of the table, e.g. Image
@@ -59,9 +54,12 @@ module Statable
   # divider defines what units the result will be in, e.g. converts seconds to days
   def extreme_value(calculation, sort, divider)
     return if table.all.empty?
-    extreme = table.all.send sort do |o|
-      send(calculation, o)
+    extreme = -1
+    table.all.send sort do |o|
+      result = send(calculation, o)
+      extreme = o unless result == -1
     end
+    return nil if extreme == -1
     send(calculation, extreme) / divider
   end
 
@@ -70,8 +68,14 @@ module Statable
   # divider defines what units the result will be in, e.g. converts seconds to days
   def average(calculation, divider)
     average = 0
+    total_count = table.all.count
     table.all.each do |o|
-      average += send(calculation, o)
+      result = send(calculation, o)
+      if result == -1
+        total_count -= 1
+      else
+        average += result
+      end
     end
     average /= total_count unless total_count == 0
     average / divider
@@ -79,11 +83,13 @@ module Statable
 
   # Calculates time difference between collection date and the date the object was created
   def time_difference(o)
+    return -1 if o.date.nil? or o.date_added.nil?
     o.date.to_time.to_i - o.date_added.to_time.to_i
   end
 
   # Size
   def size(o)
+    return -1 if o.size.nil?
     o.size
   end
 end
