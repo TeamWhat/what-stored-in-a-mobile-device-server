@@ -54,12 +54,10 @@ module Statable
   # divider defines what units the result will be in, e.g. converts seconds to days
   def extreme_value(calculation, sort, divider)
     return if table.all.empty?
-    extreme = -1
-    table.all.send sort do |o|
-      result = send(calculation, o)
-      extreme = o unless result == -1
+    extreme = valid_objects(calculation).send sort do |o|
+      send(calculation, o)
     end
-    return nil if extreme == -1
+    return nil if total_count(calculation).zero?
     send(calculation, extreme) / divider
   end
 
@@ -68,28 +66,32 @@ module Statable
   # divider defines what units the result will be in, e.g. converts seconds to days
   def average(calculation, divider)
     average = 0
-    total_count = table.all.count
-    table.all.each do |o|
-      result = send(calculation, o)
-      if result == -1
-        total_count -= 1
-      else
-        average += result
-      end
+    count = total_count(calculation)
+    valid_objects(calculation).each do |o|
+      average += send(calculation, o)
     end
-    average /= total_count unless total_count == 0
+    average /= count unless count == 0
     average / divider
   end
 
   # Calculates time difference between collection date and the date the object was created
   def time_difference(o)
-    return -1 if o.date.nil? or o.date_added.nil?
     o.date.to_time.to_i - o.date_added.to_time.to_i
   end
 
   # Size
   def size(o)
-    return -1 if o.size.nil?
     o.size
+  end
+
+  # All
+  def valid_objects(calculation)
+    return table.all.reject { |o| o.size.nil? } if calculation == :size
+    table.all.reject { |o| o.date.nil? || o.date_added.nil? }
+  end
+
+  # Calculates total number of objects in the table
+  def total_count(calculation)
+    valid_objects(calculation).count
   end
 end
